@@ -506,14 +506,54 @@ body.welcome-overlay-open {
 }
 
 .app-title {
+  position: relative;
   font-family: var(--font-serif);
   font-size: clamp(2.2rem, 6vw, 3rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  color: var(--chmsu-green-deep);
+  color: transparent;
+  background: linear-gradient(110deg, var(--chmsu-green-deep) 12%, var(--chmsu-green-light) 46%, var(--psits-orange) 64%, var(--chmsu-green-deep) 88%);
+  background-size: 220% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: titleEnter 700ms var(--ease-calm) both, titleShimmer 8s ease-in-out 700ms infinite;
 }
 
+.app-title::after {
+  content: '';
+  display: block;
+  width: 52px;
+  height: 4px;
+  margin: 10px auto 0;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--chmsu-green), var(--psits-orange));
+  box-shadow: 0 3px 10px rgba(228, 106, 33, 0.18);
+  transform-origin: center;
+  animation: titleUnderline 700ms var(--ease-calm) 160ms both;
+}
+
+@keyframes titleEnter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes titleShimmer {
+  0%, 100% { background-position: 100% center; }
+  50% { background-position: 0% center; }
+}
+
+@keyframes titleUnderline {
+  from { opacity: 0; transform: scaleX(0.35); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-title,
+  .app-title::after {
+    animation: none;
+  }
+}
 .app-subtitle {
   font-size: clamp(1.02rem, 3vw, 1.15rem);
   color: var(--color-text-secondary);
