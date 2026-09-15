@@ -1,0 +1,65 @@
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { MoodKey } from './types';
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
+
+let supabase: SupabaseClient | null = null;
+
+if (supabaseUrl && supabaseAnonKey && !supabaseUrl.includes('your-project')) {
+  try {
+    supabase = createClient(supabaseUrl, supabaseAnonKey, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+      },
+    });
+    console.log('[Analytics] Connected to Supabase analytics table.');
+  } catch (err) {
+    console.error('[Analytics] Failed to initialize Supabase client:', err);
+  }
+} else {
+  console.log('[Analytics] Supabase credentials not configured. Operating in local anonymous logging mode.');
+}
+
+/**
+ * Record an anonymous mood selection to Supabase.
+ * Strictly non-identifying: strips IP addresses, cookies, session tokens, and user agents.
+ * Only records: timestamp (auto-generated in DB), mood, and referrer.
+ */
+export async function logMoodSelection(
+  mood: MoodKey,
+  referrer?: string | null
+): Promise<{ success: boolean; fallback?: boolean; error?: string }> {
+  const sanitizedReferrer = referrer && typeof referrer === 'string'
+    ? referrer.slice(0, 500)
+    : null;
+
+  if (!supabase) {
+    console.log(`[Analytics:Local] Logged scan - Mood: ${mood}, Referrer: ${sanitizedReferrer || 'direct'}`);
+    return { success: true, fallback: true };
+  }
+
+  try {
+    // Insert-only call: no SELECT performed to strictly respect insert-only RLS policy
+    const { error } = await supabase
+      .from('logs')
+      .insert([
+        {
+          mood,
+          referrer: sanitizedReferrer,
+        },
+      ]);
+
+    if (error) {
+      console.error('[Analytics] Error writing to Supabase logs table:', error.message);
+      return { success: false, error: error.message };
+    }
+
+    return { success: true };
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Unknown error';
+    console.error('[Analytics] Unexpected error logging mood:', message);
+    return { success: false, error: message };
+  }
+}

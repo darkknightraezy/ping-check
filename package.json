@@ -1,0 +1,35 @@
+{
+  "name": "ping-check",
+  "version": "1.0.0",
+  "description": "Ping Check: How's Your Connection With Yourself? - A lightweight, mobile-responsive emotional connection check-in app with anonymous analytics.",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [
+    "mental-health",
+    "check-in",
+    "wellness",
+    "typescript",
+    "nextjs",
+    "react"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "lucide-react": "^0.475.0",
+    "next": "^14.2.23",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.16.5",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "typescript": "^5.6.2"
+  }
+}
