@@ -1013,6 +1013,33 @@ body.welcome-overlay-open {
   .survey-actions { align-items: flex-end; }
 }
 
+.survey-insights-card {
+  width: 100%;
+  margin: var(--space-4) auto 0;
+  padding: 16px;
+  border: 1px solid var(--psits-orange-border);
+  border-radius: var(--radius-md);
+  background: linear-gradient(145deg, var(--psits-orange-tint) 0%, var(--chmsu-green-tint) 100%);
+}
+.survey-insights-header,
+.survey-insights-title-wrap,
+.survey-insight-label { display: flex; align-items: center; }
+.survey-insights-header { justify-content: space-between; gap: 10px; }
+.survey-insights-title-wrap { gap: 8px; color: var(--psits-orange-deep); }
+.survey-insights-kicker { display: block; color: var(--psits-orange-deep); font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.survey-insights-card h3 { margin-top: 2px; color: var(--chmsu-green-deep); font-family: var(--font-serif); font-size: 1.06rem; }
+.survey-insights-header > svg { color: var(--chmsu-green-deep); }
+.survey-insights-note { margin-top: 8px; color: var(--color-text-secondary); font-size: 0.76rem; line-height: 1.5; }
+.survey-insights-section { margin-top: 16px; }
+.survey-insights-section h4 { color: var(--chmsu-green-deep); font-size: 0.78rem; }
+.survey-insights-bars { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.survey-insight-row { display: flex; flex-direction: column; gap: 4px; }
+.survey-insight-label { justify-content: space-between; gap: 8px; color: var(--color-text-secondary); font-size: 0.72rem; }
+.survey-insight-label strong { color: var(--psits-orange-deep); font-size: 0.7rem; }
+.survey-insight-track { height: 6px; overflow: hidden; border-radius: var(--radius-full); background: rgba(21, 115, 62, 0.13); }
+.survey-insight-track span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--chmsu-green), var(--psits-orange)); }
+.survey-insights-footnote { margin-top: 14px; color: var(--color-text-muted); font-size: 0.67rem; }
+
 /* Quick Wellness Tools Bar (Breathing & Venting) */
 .quick-tools-bar {
   display: flex;

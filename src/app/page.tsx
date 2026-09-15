@@ -14,6 +14,7 @@ import { GroundingLibrary } from '@/components/GroundingLibrary';
 import { FeedbackPrompt } from '@/components/FeedbackPrompt';
 import { CommunityInsights } from '@/components/CommunityInsights';
 import { SurveyForm } from '@/components/SurveyForm';
+import { SurveyInsights } from '@/components/SurveyInsights';
 
 const defaultQuotes = moodQuotesData as MoodQuotesRegistry;
 const MOOD_HISTORY_STORAGE_KEY = 'ping-check-local-history-v1';
@@ -155,6 +156,7 @@ export default function HomePage() {
       )}
       {!selectedMood && <CommunityInsights />}
       {!selectedMood && <SurveyForm />}
+      {!selectedMood && <SurveyInsights />}
 
       {/* Somatic Breathing Pacer Card */}
       {showBreathing && (
