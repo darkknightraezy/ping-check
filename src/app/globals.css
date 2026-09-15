@@ -1052,6 +1052,131 @@ body.welcome-overlay-open {
   color: var(--color-text-primary);
 }
 
+.reflection-journal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  border: 1px solid var(--psits-orange-border);
+  border-radius: var(--radius-md);
+  background: linear-gradient(145deg, var(--psits-orange-tint) 0%, var(--color-surface-subtle) 100%);
+}
+
+.reflection-journal-header,
+.reflection-journal-title-wrap,
+.reflection-journal-actions,
+.reflection-journal-history-heading,
+.reflection-journal-entry > div {
+  display: flex;
+  align-items: center;
+}
+
+.reflection-journal-header { justify-content: space-between; gap: 10px; }
+.reflection-journal-title-wrap { gap: 9px; color: var(--psits-orange-deep); }
+.reflection-journal-kicker {
+  display: block;
+  color: var(--psits-orange-deep);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.reflection-journal h3 {
+  margin-top: 2px;
+  color: var(--chmsu-green-deep);
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+}
+.reflection-journal-history-toggle,
+.reflection-journal-history-heading button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  color: var(--chmsu-green-deep);
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.reflection-journal-history-toggle:hover,
+.reflection-journal-history-heading button:hover {
+  color: var(--psits-orange-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.reflection-journal-privacy { color: var(--color-text-muted); font-size: 0.75rem; line-height: 1.45; }
+.reflection-journal-prompt {
+  padding: 10px 12px;
+  border-left: 3px solid var(--psits-orange);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 246, 238, 0.78);
+}
+.reflection-journal-prompt span {
+  color: var(--psits-orange-deep);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.reflection-journal-prompt p {
+  margin-top: 4px;
+  color: var(--chmsu-green-deep);
+  font-family: var(--font-serif);
+  font-size: 0.94rem;
+  font-style: italic;
+  line-height: 1.45;
+}
+.reflection-journal-label { color: var(--color-text-secondary); font-size: 0.78rem; font-weight: 700; }
+.reflection-journal-input {
+  width: 100%;
+  min-height: 104px;
+  resize: vertical;
+  padding: 11px 12px;
+  border: 1.5px solid var(--chmsu-green-border);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.68);
+  color: var(--color-text-primary);
+  font: inherit;
+  line-height: 1.5;
+  transition: border-color var(--duration-normal) var(--ease-calm), box-shadow var(--duration-normal) var(--ease-calm);
+}
+.reflection-journal-input:focus {
+  outline: none;
+  border-color: var(--chmsu-green);
+  box-shadow: 0 0 0 3px var(--chmsu-green-glow);
+}
+.reflection-journal-actions { justify-content: space-between; gap: 10px; }
+.reflection-journal-count { color: var(--color-text-muted); font-size: 0.68rem; }
+.reflection-journal-save {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: var(--chmsu-green);
+  color: #FFFFFF;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-calm);
+}
+.reflection-journal-save:hover:not(:disabled) { background: var(--chmsu-green-hover); transform: translateY(-1px); }
+.reflection-journal-save:disabled { opacity: 0.48; cursor: not-allowed; }
+.reflection-journal-confirmation { color: var(--chmsu-green-deep); font-size: 0.74rem; font-weight: 700; }
+.reflection-journal-history { display: flex; flex-direction: column; gap: 8px; padding-top: 10px; border-top: 1px solid var(--chmsu-green-border); }
+.reflection-journal-history-heading { justify-content: space-between; gap: 10px; color: var(--chmsu-green-deep); font-size: 0.78rem; font-weight: 700; }
+.reflection-journal-entry { padding: 9px 10px; border: 1px solid var(--chmsu-green-border); border-radius: var(--radius-sm); background: rgba(255, 255, 255, 0.56); }
+.reflection-journal-entry > div { justify-content: space-between; gap: 8px; }
+.reflection-journal-entry strong { color: var(--chmsu-green-deep); font-size: 0.75rem; }
+.reflection-journal-entry time { color: var(--color-text-muted); font-size: 0.68rem; }
+.reflection-journal-entry p { margin-top: 5px; color: var(--color-text-secondary); font-size: 0.78rem; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
+
 .grounding-box {
   background-color: var(--psits-orange-tint);
   border: 1.5px solid var(--psits-orange-border);

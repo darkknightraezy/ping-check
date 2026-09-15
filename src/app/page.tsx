@@ -141,6 +141,7 @@ export default function HomePage() {
       ) : (
         /* View 2: Empathetic Quote & Grounding Card */
         <QuoteDisplay
+          moodKey={selectedMood}
           moodLabel={selectedMoodLabel}
           quoteData={quoteData}
           onBack={handleBackToMoods}

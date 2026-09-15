@@ -2,15 +2,18 @@
 
 import React from 'react';
 import { ArrowLeft, Clock } from 'lucide-react';
-import { MoodQuote } from '@/lib/types';
+import { MoodKey, MoodQuote } from '@/lib/types';
+import { ReflectionJournal } from '@/components/ReflectionJournal';
 
 interface QuoteDisplayProps {
+  moodKey: MoodKey;
   moodLabel: string;
   quoteData: MoodQuote;
   onBack: () => void;
 }
 
 export const QuoteDisplay: React.FC<QuoteDisplayProps> = ({
+  moodKey,
   moodLabel,
   quoteData,
   onBack,
@@ -59,6 +62,8 @@ export const QuoteDisplay: React.FC<QuoteDisplayProps> = ({
             </p>
           </div>
         )}
+
+        <ReflectionJournal moodKey={moodKey} moodLabel={moodLabel} />
 
         <div className="quote-actions">
           <button
