@@ -27,11 +27,11 @@
   --psits-orange-glow: rgba(228, 106, 33, 0.16);
 
   /* Uplifting, Fresh & Warm Surfaces */
-  --color-canvas: #EAF3EC;
-  --color-surface: #FFFDF9;
-  --color-surface-subtle: #F4F8F4;
-  --color-surface-hover: #EDF6EF;
-  --color-surface-active: #DDEDE2;
+  --color-canvas: #DDEFE3;
+  --color-surface: #F7FCF8;
+  --color-surface-subtle: #EAF5EE;
+  --color-surface-hover: #E1F1E6;
+  --color-surface-active: #D0E8D8;
 
   /* Refined borders */
   --color-border-subtle: rgba(21, 115, 62, 0.12);
@@ -106,10 +106,10 @@ body {
   align-items: center;
   padding: var(--space-6) var(--space-4) var(--space-12);
   background:
-    radial-gradient(circle at 12% 0%, rgba(32, 146, 82, 0.2) 0%, transparent 34%),
-    radial-gradient(circle at 92% 12%, rgba(228, 106, 33, 0.11) 0%, transparent 30%),
-    linear-gradient(145deg, rgba(255, 253, 249, 0.36) 0%, transparent 48%),
-    var(--color-canvas);
+    radial-gradient(circle at 8% -4%, rgba(32, 146, 82, 0.42) 0%, transparent 35%),
+    radial-gradient(circle at 96% 8%, rgba(228, 106, 33, 0.24) 0%, transparent 30%),
+    linear-gradient(135deg, rgba(13, 78, 39, 0.16) 0%, transparent 46%),
+    linear-gradient(155deg, var(--color-canvas) 0%, #CFE8D7 58%, #F3E5D7 100%);
 }
 
 /* App Wrapper */
