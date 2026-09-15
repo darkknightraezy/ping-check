@@ -936,6 +936,82 @@ body.welcome-overlay-open {
 .community-insight-track span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--chmsu-green), var(--psits-orange)); }
 .community-insights-footnote { margin-top: 12px; color: var(--color-text-muted); font-size: 0.67rem; }
 
+.survey-card {
+  width: 100%;
+  margin: var(--space-4) auto 0;
+  padding: 16px;
+  border: 1px solid var(--chmsu-green-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-subtle);
+}
+.survey-card-header,
+.survey-card-title-wrap,
+.survey-actions,
+.survey-complete {
+  display: flex;
+  align-items: center;
+}
+.survey-card-header { justify-content: space-between; gap: 10px; }
+.survey-card-title-wrap { gap: 8px; color: var(--chmsu-green); }
+.survey-kicker {
+  display: block;
+  color: var(--psits-orange-deep);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.survey-card h3 { margin-top: 2px; color: var(--chmsu-green-deep); font-family: var(--font-serif); font-size: 1.06rem; }
+.survey-intro { margin-top: 8px; color: var(--color-text-secondary); font-size: 0.78rem; line-height: 1.5; }
+.survey-open-button,
+.survey-submit {
+  min-height: 38px;
+  padding: 8px 13px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: var(--chmsu-green);
+  color: #FFFFFF;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-calm);
+}
+.survey-open-button { margin-top: 12px; }
+.survey-open-button:hover,
+.survey-submit:hover:not(:disabled) { background: var(--chmsu-green-hover); transform: translateY(-1px); }
+.survey-close { display: inline-flex; padding: 4px; border: 0; border-radius: var(--radius-full); background: transparent; color: var(--color-text-muted); cursor: pointer; }
+.survey-close:hover { background: var(--chmsu-green-subtle); color: var(--chmsu-green-deep); }
+.survey-form { display: flex; flex-direction: column; gap: 14px; margin-top: 14px; }
+.survey-privacy { padding: 9px 10px; border-left: 3px solid var(--psits-orange); border-radius: var(--radius-sm); background: var(--psits-orange-tint); color: var(--color-text-secondary); font-size: 0.72rem; line-height: 1.45; }
+.survey-form fieldset { display: flex; flex-direction: column; gap: 7px; border: 0; }
+.survey-form legend,
+.survey-text-label { color: var(--chmsu-green-deep); font-size: 0.8rem; font-weight: 700; }
+.survey-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+.survey-options-inline { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.survey-options-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.survey-option { min-width: 0; }
+.survey-option input { position: absolute; opacity: 0; pointer-events: none; }
+.survey-option span { display: block; padding: 8px 9px; border: 1px solid var(--chmsu-green-border); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-text-secondary); font-size: 0.74rem; line-height: 1.25; text-align: center; cursor: pointer; transition: all var(--duration-normal) var(--ease-calm); }
+.survey-option span:hover { border-color: var(--chmsu-green); background: var(--chmsu-green-tint); }
+.survey-option input:checked + span { border-color: var(--chmsu-green); background: var(--chmsu-green); color: #FFFFFF; font-weight: 700; }
+.survey-option input:focus-visible + span { outline: 3px solid var(--psits-orange-light); outline-offset: 2px; }
+.survey-text-label span { color: var(--color-text-muted); font-size: 0.7rem; font-weight: 400; }
+.survey-form textarea { width: 100%; resize: vertical; min-height: 74px; padding: 10px; border: 1px solid var(--chmsu-green-border); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-text-primary); font: inherit; font-size: 0.8rem; line-height: 1.45; }
+.survey-form textarea:focus { outline: none; border-color: var(--chmsu-green); box-shadow: 0 0 0 3px var(--chmsu-green-glow); }
+.survey-actions { justify-content: space-between; gap: 10px; }
+.survey-actions > span { color: var(--color-text-muted); font-size: 0.67rem; line-height: 1.35; }
+.survey-submit:disabled { opacity: 0.48; cursor: not-allowed; }
+.survey-complete { gap: 10px; min-height: 82px; }
+.survey-complete-icon { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; flex: 0 0 auto; border-radius: 50%; background: var(--chmsu-green); color: #FFFFFF; }
+.survey-complete h3 { margin: 0; }
+.survey-complete p { margin-top: 3px; color: var(--color-text-secondary); font-size: 0.76rem; line-height: 1.4; }
+
+@media (max-width: 500px) {
+  .survey-options-inline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .survey-actions { align-items: flex-end; }
+}
+
 /* Quick Wellness Tools Bar (Breathing & Venting) */
 .quick-tools-bar {
   display: flex;

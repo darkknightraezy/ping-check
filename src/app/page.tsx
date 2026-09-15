@@ -13,6 +13,7 @@ import { LocalCheckIn, MoodHistory } from '@/components/MoodHistory';
 import { GroundingLibrary } from '@/components/GroundingLibrary';
 import { FeedbackPrompt } from '@/components/FeedbackPrompt';
 import { CommunityInsights } from '@/components/CommunityInsights';
+import { SurveyForm } from '@/components/SurveyForm';
 
 const defaultQuotes = moodQuotesData as MoodQuotesRegistry;
 const MOOD_HISTORY_STORAGE_KEY = 'ping-check-local-history-v1';
@@ -153,6 +154,7 @@ export default function HomePage() {
         <MoodHistory entries={moodHistory} onClear={clearMoodHistory} />
       )}
       {!selectedMood && <CommunityInsights />}
+      {!selectedMood && <SurveyForm />}
 
       {/* Somatic Breathing Pacer Card */}
       {showBreathing && (
