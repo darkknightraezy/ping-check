@@ -12,6 +12,7 @@ import { Toast } from '@/components/Toast';
 import { LocalCheckIn, MoodHistory } from '@/components/MoodHistory';
 import { GroundingLibrary } from '@/components/GroundingLibrary';
 import { FeedbackPrompt } from '@/components/FeedbackPrompt';
+import { CommunityInsights } from '@/components/CommunityInsights';
 
 const defaultQuotes = moodQuotesData as MoodQuotesRegistry;
 const MOOD_HISTORY_STORAGE_KEY = 'ping-check-local-history-v1';
@@ -151,6 +152,7 @@ export default function HomePage() {
       {!selectedMood && (
         <MoodHistory entries={moodHistory} onClear={clearMoodHistory} />
       )}
+      {!selectedMood && <CommunityInsights />}
 
       {/* Somatic Breathing Pacer Card */}
       {showBreathing && (

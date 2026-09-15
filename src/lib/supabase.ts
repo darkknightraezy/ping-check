@@ -3,8 +3,10 @@ import { MoodKey } from './types';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 let supabase: SupabaseClient | null = null;
+let supabaseAdmin: SupabaseClient | null = null;
 
 if (supabaseUrl && supabaseAnonKey && !supabaseUrl.includes('your-project')) {
   try {
@@ -20,6 +22,16 @@ if (supabaseUrl && supabaseAnonKey && !supabaseUrl.includes('your-project')) {
   }
 } else {
   console.log('[Analytics] Supabase credentials not configured. Operating in local anonymous logging mode.');
+}
+
+if (supabaseUrl && supabaseServiceKey && !supabaseUrl.includes('your-project')) {
+  try {
+    supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
+      auth: { persistSession: false, autoRefreshToken: false },
+    });
+  } catch (err) {
+    console.error('[Analytics] Failed to initialize aggregate insights client:', err);
+  }
 }
 
 /**
@@ -61,5 +73,55 @@ export async function logMoodSelection(
     const message = err instanceof Error ? err.message : 'Unknown error';
     console.error('[Analytics] Unexpected error logging mood:', message);
     return { success: false, error: message };
+  }
+}
+
+export interface CommunityMoodInsights {
+  available: boolean;
+  total: number;
+  windowDays: number;
+  distribution: Array<{ mood: MoodKey; percentage: number }>;
+}
+
+/**
+ * Return only coarse, aggregate mood percentages. Raw rows never leave the server.
+ * The minimum threshold prevents small groups from being represented publicly.
+ */
+export async function getCommunityMoodInsights(): Promise<CommunityMoodInsights> {
+  const windowDays = 30;
+  const minimumResponses = 10;
+  const unavailable: CommunityMoodInsights = {
+    available: false,
+    total: 0,
+    windowDays,
+    distribution: [],
+  };
+
+  if (!supabaseAdmin) return unavailable;
+
+  try {
+    const since = new Date(Date.now() - windowDays * 24 * 60 * 60 * 1000).toISOString();
+    const { data, error } = await supabaseAdmin
+      .from('logs')
+      .select('mood,created_at')
+      .gte('created_at', since)
+      .limit(5000);
+
+    if (error || !data || data.length < minimumResponses) return unavailable;
+
+    const counts = new Map<string, number>();
+    for (const row of data) counts.set(row.mood, (counts.get(row.mood) || 0) + 1);
+
+    const distribution = Array.from(counts.entries())
+      .map(([mood, count]) => ({
+        mood: mood as MoodKey,
+        percentage: Math.round((count / data.length) * 100),
+      }))
+      .sort((a, b) => b.percentage - a.percentage);
+
+    return { available: true, total: data.length, windowDays, distribution };
+  } catch (err) {
+    console.error('[Analytics] Failed to build community insights:', err);
+    return unavailable;
   }
 }
