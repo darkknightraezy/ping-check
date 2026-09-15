@@ -25,6 +25,7 @@ export const FeedbackPrompt: React.FC = () => {
     }
 
     let hasTriggered = false;
+    let retryTimer: number | null = null;
     const canShowPrompt = () => {
       const blockingSelectors = [
         'body.welcome-overlay-open',
@@ -37,7 +38,11 @@ export const FeedbackPrompt: React.FC = () => {
     };
 
     const showPrompt = () => {
-      if (hasTriggered || !canShowPrompt()) return;
+      if (hasTriggered) return;
+      if (!canShowPrompt()) {
+        retryTimer = window.setTimeout(showPrompt, 1000);
+        return;
+      }
       hasTriggered = true;
       setIsVisible(true);
       window.removeEventListener('scroll', handleScroll);
@@ -53,6 +58,7 @@ export const FeedbackPrompt: React.FC = () => {
 
     return () => {
       window.clearTimeout(timer);
+      if (retryTimer !== null) window.clearTimeout(retryTimer);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
