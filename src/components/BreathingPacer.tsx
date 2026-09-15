@@ -105,20 +105,29 @@ export const BreathingPacer: React.FC<BreathingPacerProps> = ({ onClose }) => {
       </p>
 
       <div className="breather-container">
-        <div
-          id="breather-circle"
-          className={`breather-circle phase-${phase} ${!isActive ? 'paused' : ''}`}
-          aria-hidden="true"
-        >
-          <div className="breather-inner">
-            <span id="breather-label" className="breather-label">
-              {getPhaseLabel()}
-            </span>
-            <span id="breather-counter" className="breather-counter">
-              {secondsLeft}
+        {!hasStarted ? (
+          <div className="breather-ready" role="status">
+            <span className="breather-ready-title">Ready when you are</span>
+            <span className="breather-ready-text">
+              Click Start Exercise when you&apos;re ready to begin.
             </span>
           </div>
-        </div>
+        ) : (
+          <div
+            id="breather-circle"
+            className={`breather-circle phase-${phase} ${!isActive ? 'paused' : ''}`}
+            aria-hidden="true"
+          >
+            <div className="breather-inner">
+              <span id="breather-label" className="breather-label">
+                {getPhaseLabel()}
+              </span>
+              <span id="breather-counter" className="breather-counter">
+                {secondsLeft}
+              </span>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="breather-controls">
