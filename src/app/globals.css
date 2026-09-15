@@ -987,15 +987,17 @@ body.welcome-overlay-open {
 .survey-form fieldset { display: flex; flex-direction: column; gap: 7px; border: 0; }
 .survey-form legend,
 .survey-text-label { color: var(--chmsu-green-deep); font-size: 0.8rem; font-weight: 700; }
-.survey-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+.survey-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; }
 .survey-options-inline { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .survey-options-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .survey-option { min-width: 0; }
-.survey-option input { position: absolute; opacity: 0; pointer-events: none; }
-.survey-option span { display: block; padding: 8px 9px; border: 1px solid var(--chmsu-green-border); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-text-secondary); font-size: 0.74rem; line-height: 1.25; text-align: center; cursor: pointer; transition: all var(--duration-normal) var(--ease-calm); }
-.survey-option span:hover { border-color: var(--chmsu-green); background: var(--chmsu-green-tint); }
-.survey-option input:checked + span { border-color: var(--chmsu-green); background: var(--chmsu-green); color: #FFFFFF; font-weight: 700; }
-.survey-option input:focus-visible + span { outline: 3px solid var(--psits-orange-light); outline-offset: 2px; }
+.survey-option { display: flex; align-items: center; gap: 7px; color: var(--color-text-secondary); font-size: 0.75rem; line-height: 1.25; cursor: pointer; }
+.survey-option input { appearance: none; width: 16px; height: 16px; flex: 0 0 auto; margin: 0; border: 1.5px solid var(--chmsu-green-border); border-radius: 50%; background: var(--color-surface); cursor: pointer; transition: border-color var(--duration-normal) var(--ease-calm), box-shadow var(--duration-normal) var(--ease-calm), background-color var(--duration-normal) var(--ease-calm); }
+.survey-option span { display: block; padding: 4px 0; }
+.survey-option:hover { color: var(--chmsu-green-deep); }
+.survey-option:hover input { border-color: var(--chmsu-green); }
+.survey-option input:checked { border: 4px solid var(--chmsu-green); background: var(--color-surface); }
+.survey-option input:focus-visible { outline: 3px solid var(--psits-orange-light); outline-offset: 2px; }
 .survey-text-label span { color: var(--color-text-muted); font-size: 0.7rem; font-weight: 400; }
 .survey-form textarea { width: 100%; resize: vertical; min-height: 74px; padding: 10px; border: 1px solid var(--chmsu-green-border); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-text-primary); font: inherit; font-size: 0.8rem; line-height: 1.45; }
 .survey-form textarea:focus { outline: none; border-color: var(--chmsu-green); box-shadow: 0 0 0 3px var(--chmsu-green-glow); }
