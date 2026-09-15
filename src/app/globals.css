@@ -27,11 +27,11 @@
   --psits-orange-glow: rgba(228, 106, 33, 0.16);
 
   /* Uplifting, Fresh & Warm Surfaces */
-  --color-canvas: #FAF9F5;
-  --color-surface: #FFFFFF;
-  --color-surface-subtle: #F5F7F5;
-  --color-surface-hover: #F0F5F2;
-  --color-surface-active: #E4EEE7;
+  --color-canvas: #EAF3EC;
+  --color-surface: #FFFDF9;
+  --color-surface-subtle: #F4F8F4;
+  --color-surface-hover: #EDF6EF;
+  --color-surface-active: #DDEDE2;
 
   /* Refined borders */
   --color-border-subtle: rgba(21, 115, 62, 0.12);
@@ -106,8 +106,9 @@ body {
   align-items: center;
   padding: var(--space-6) var(--space-4) var(--space-12);
   background:
-    radial-gradient(circle at 15% 5%, rgba(21, 115, 62, 0.09) 0%, transparent 45%),
-    radial-gradient(circle at 85% 10%, rgba(228, 106, 33, 0.09) 0%, transparent 45%),
+    radial-gradient(circle at 12% 0%, rgba(32, 146, 82, 0.2) 0%, transparent 34%),
+    radial-gradient(circle at 92% 12%, rgba(228, 106, 33, 0.11) 0%, transparent 30%),
+    linear-gradient(145deg, rgba(255, 253, 249, 0.36) 0%, transparent 48%),
     var(--color-canvas);
 }
 
