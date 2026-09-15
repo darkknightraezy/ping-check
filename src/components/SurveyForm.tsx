@@ -66,7 +66,6 @@ export const SurveyForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [helpfulnessLevel, setHelpfulnessLevel] = useState(3);
-  const [featureLevel, setFeatureLevel] = useState(1);
   const [reuseLevel, setReuseLevel] = useState(2);
   const [answers, setAnswers] = useState<SurveyAnswers>(initialAnswers);
 
@@ -181,14 +180,14 @@ export const SurveyForm: React.FC = () => {
           </fieldset>
           <fieldset>
             <legend>Which part helped you most?</legend>
-            <SurveySlider
-              name="feature"
-              value={featureLevel}
-              options={featureOptions}
-              placeholder="Choose a feature"
-              onChange={(level) => { setFeatureLevel(level); updateAnswer('feature', featureOptions[level - 1]); }}
-              ariaLabel="Choose which Ping Check feature helped most"
-            />
+            <div className="survey-feature-choices">
+              {featureOptions.map((option) => (
+                <label key={option} className="survey-feature-choice">
+                  <input type="radio" name="feature" value={option} checked={answers.feature === option} onChange={() => updateAnswer('feature', option)} />
+                  <span>{option}</span>
+                </label>
+              ))}
+            </div>
           </fieldset>
           <fieldset>
             <legend>Would you use Ping Check again?</legend>
