@@ -1002,6 +1002,7 @@ body.welcome-overlay-open {
 .survey-actions { justify-content: space-between; gap: 10px; }
 .survey-actions > span { color: var(--color-text-muted); font-size: 0.67rem; line-height: 1.35; }
 .survey-submit:disabled { opacity: 0.48; cursor: not-allowed; }
+.survey-error { color: var(--psits-orange-deep); font-size: 0.74rem; line-height: 1.4; }
 .survey-complete { gap: 10px; min-height: 82px; }
 .survey-complete-icon { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; flex: 0 0 auto; border-radius: 50%; background: var(--chmsu-green); color: #FFFFFF; }
 .survey-complete h3 { margin: 0; }

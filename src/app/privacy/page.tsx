@@ -46,12 +46,15 @@ export default function PrivacyPage() {
           Anonymous mood selections may be used to understand which check-in experiences are useful and to improve the site. We do not use these selections to identify, profile, contact, or make decisions about individual visitors.
         </p>
         <p>
+          If you complete the optional survey, your selected answers and any optional improvement note may be stored without your identity and used only for aggregate service-improvement reporting. Survey results are not combined with your private journal or used to identify individual visitors.
+        </p>
+        <p>
           Vent Space is not a clinical service, emergency service, or monitored crisis channel. A reflection does not create a counseling relationship or guarantee a personal response.
         </p>
 
         <h2>Storage and service providers</h2>
         <p>
-          Anonymous mood data may be stored in Supabase when analytics credentials are enabled. When Supabase is not configured, the application uses a local fallback and does not write the mood selection to a database. The site is deployed through Vercel, and Vercel or other infrastructure providers may process ordinary technical information in their own logs and according to their own privacy policies.
+          Anonymous mood and survey data may be stored in Supabase when analytics credentials are enabled. When Supabase is not configured, the application uses a local fallback and does not write those analytics responses to a database. The site is deployed through Vercel, and Vercel or other infrastructure providers may process ordinary technical information in their own logs and according to their own privacy policies.
         </p>
         <p>
           We retain information only for as long as needed for the purposes described above, operational troubleshooting, security, or legal obligations. Retention periods can depend on the configured service providers.

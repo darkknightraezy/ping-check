@@ -26,6 +26,8 @@ const reuseOptions = ['Yes', 'Maybe', 'No'];
 export const SurveyForm: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [answers, setAnswers] = useState<SurveyAnswers>(initialAnswers);
 
   useEffect(() => {
@@ -40,16 +42,33 @@ export const SurveyForm: React.FC = () => {
     setAnswers((current) => ({ ...current, [field]: value }));
   };
 
-  const submitSurvey = (event: FormEvent<HTMLFormElement>) => {
+  const submitSurvey = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!answers.helpfulness || !answers.feature || !answers.reuse) return;
+    if (!answers.helpfulness || !answers.feature || !answers.reuse || isSubmitting) return;
 
+    setIsSubmitting(true);
+    setSubmitError(null);
     try {
-      window.sessionStorage.setItem(SURVEY_SESSION_KEY, 'true');
-    } catch {
-      // Continue without session storage when it is unavailable.
+      const response = await fetch('/api/survey', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(answers),
+      });
+      const payload = await response.json().catch(() => null);
+      if (!response.ok || !payload?.success) {
+        throw new Error(payload?.message || 'The survey could not be saved right now.');
+      }
+      try {
+        window.sessionStorage.setItem(SURVEY_SESSION_KEY, 'true');
+      } catch {
+        // Continue without session storage when it is unavailable.
+      }
+      setIsSubmitted(true);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'The survey could not be saved right now.');
+    } finally {
+      setIsSubmitting(false);
     }
-    setIsSubmitted(true);
   };
 
   if (isSubmitted) {
@@ -90,7 +109,7 @@ export const SurveyForm: React.FC = () => {
         </>
       ) : (
         <form className="survey-form" onSubmit={submitSurvey}>
-          <p className="survey-privacy">Anonymous and optional. Please do not include names, student numbers, contact details, or private journal entries.</p>
+          <p className="survey-privacy">Anonymous and optional. Answers are aggregated for improvement. Please do not include names, student numbers, contact details, or private journal entries.</p>
           <fieldset>
             <legend>How helpful was Ping Check today?</legend>
             <div className="survey-options survey-options-inline">
@@ -128,8 +147,9 @@ export const SurveyForm: React.FC = () => {
           <textarea id="survey-improvement" value={answers.improvement} onChange={(event) => updateAnswer('improvement', event.target.value)} maxLength={500} rows={3} placeholder="A small idea, request, or encouragement..." />
           <div className="survey-actions">
             <span>Required questions are marked by the choices above.</span>
-            <button type="submit" className="survey-submit" disabled={!answers.helpfulness || !answers.feature || !answers.reuse}>Send feedback</button>
+            <button type="submit" className="survey-submit" disabled={!answers.helpfulness || !answers.feature || !answers.reuse || isSubmitting}>{isSubmitting ? 'Sending…' : 'Send feedback'}</button>
           </div>
+          {submitError && <p className="survey-error" role="alert">{submitError}</p>}
         </form>
       )}
     </section>
@@ -137,4 +157,3 @@ export const SurveyForm: React.FC = () => {
 };
 
 export default SurveyForm;
-

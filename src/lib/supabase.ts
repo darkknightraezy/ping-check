@@ -76,6 +76,84 @@ export async function logMoodSelection(
   }
 }
 
+export interface SurveyResponsePayload {
+  helpfulness: string;
+  feature: string;
+  reuse: string;
+  improvement?: string | null;
+}
+
+export async function logSurveyResponse(
+  response: SurveyResponsePayload,
+): Promise<{ success: boolean; fallback?: boolean; error?: string }> {
+  if (!supabase) {
+    console.log('[Analytics:Local] Survey response received without persistence.');
+    return { success: true, fallback: true };
+  }
+
+  try {
+    const { error } = await supabase
+      .from('survey_responses')
+      .insert([{ ...response, improvement: response.improvement?.slice(0, 500) || null }]);
+
+    if (error) {
+      console.error('[Analytics] Error writing survey response:', error.message);
+      return { success: false, error: error.message };
+    }
+    return { success: true };
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Unknown error';
+    console.error('[Analytics] Unexpected survey error:', message);
+    return { success: false, error: message };
+  }
+}
+
+export interface SurveyInsights {
+  available: boolean;
+  total: number;
+  windowDays: number;
+  helpfulness: Array<{ label: string; percentage: number }>;
+  features: Array<{ label: string; percentage: number }>;
+  reuse: Array<{ label: string; percentage: number }>;
+}
+
+export async function getSurveyInsights(): Promise<SurveyInsights> {
+  const windowDays = 90;
+  const minimumResponses = 10;
+  const unavailable: SurveyInsights = { available: false, total: 0, windowDays, helpfulness: [], features: [], reuse: [] };
+  if (!supabaseAdmin) return unavailable;
+
+  try {
+    const since = new Date(Date.now() - windowDays * 24 * 60 * 60 * 1000).toISOString();
+    const { data, error } = await supabaseAdmin
+      .from('survey_responses')
+      .select('helpfulness,feature,reuse,created_at')
+      .gte('created_at', since)
+      .limit(5000);
+    if (error || !data || data.length < minimumResponses) return unavailable;
+
+    const summarize = (field: 'helpfulness' | 'feature' | 'reuse') => {
+      const counts = new Map<string, number>();
+      for (const row of data) counts.set(row[field], (counts.get(row[field]) || 0) + 1);
+      return Array.from(counts.entries())
+        .map(([label, count]) => ({ label, percentage: Math.round((count / data.length) * 100) }))
+        .sort((a, b) => b.percentage - a.percentage);
+    };
+
+    return {
+      available: true,
+      total: data.length,
+      windowDays,
+      helpfulness: summarize('helpfulness'),
+      features: summarize('feature'),
+      reuse: summarize('reuse'),
+    };
+  } catch (err) {
+    console.error('[Analytics] Failed to build survey insights:', err);
+    return unavailable;
+  }
+}
+
 export interface CommunityMoodInsights {
   available: boolean;
   total: number;
