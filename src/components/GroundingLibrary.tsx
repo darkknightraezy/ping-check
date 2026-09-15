@@ -33,6 +33,24 @@ const EXERCISES: Exercise[] = [
     intro: 'Create a small bridge back to your next manageable task.',
     steps: ['Put both feet on the floor.', 'Take one slow breath and sip water if available.', 'Name the next task in one short sentence.', 'Choose a first step that can take less than five minutes.'],
   },
+  {
+    title: 'Self-kindness pause',
+    duration: '1 minute',
+    intro: 'Meet yourself with the same patience you would offer a friend.',
+    steps: ['Notice the feeling without arguing with it.', 'Place a hand somewhere comforting.', 'Say quietly: “This is hard, and I am allowed to go gently.”', 'Choose one small kind thing you can do next.'],
+  },
+  {
+    title: 'Put down one thing',
+    duration: '2 minutes',
+    intro: 'Separate what needs your attention now from what can wait.',
+    steps: ['Name one worry or task taking up space.', 'Ask: “Does this need action in the next hour?”', 'If not, imagine placing it on a shelf until later.', 'Write or say the next smallest useful step.'],
+  },
+  {
+    title: 'Honor what matters',
+    duration: '2 minutes',
+    intro: 'Make room for grief, change, or something you are learning to release.',
+    steps: ['Name what or who you are carrying in your thoughts.', 'Notice one quality, memory, or lesson that mattered.', 'Take one breath and let the feeling be present.', 'Choose a gentle way to care for yourself afterward.'],
+  },
 ];
 
 export const GroundingLibrary: React.FC<GroundingLibraryProps> = ({ onClose }) => {
@@ -53,6 +71,7 @@ export const GroundingLibrary: React.FC<GroundingLibraryProps> = ({ onClose }) =
   };
 
   const resetSteps = () => setCompletedSteps([]);
+  const isComplete = completedSteps.length === exercise.steps.length;
 
   return (
     <section className="grounding-card" aria-label="Grounding exercise library">
@@ -86,6 +105,12 @@ export const GroundingLibrary: React.FC<GroundingLibraryProps> = ({ onClose }) =
           <span>{completedSteps.length}/{exercise.steps.length} steps</span>
         </div>
         <p className="grounding-intro">{exercise.intro}</p>
+        {isComplete && (
+          <div className="grounding-complete" role="status">
+            <strong>You gave yourself a moment.</strong>
+            <span>That counts. You can stay here, reset, or choose another tool.</span>
+          </div>
+        )}
         <ol className="grounding-steps">
           {exercise.steps.map((step, index) => (
             <li key={step} className={completedSteps.includes(index) ? 'completed' : ''}>

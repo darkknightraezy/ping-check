@@ -1504,6 +1504,22 @@ body.welcome-overlay-open {
   font-style: italic;
 }
 
+.grounding-complete {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--psits-orange-border);
+  border-radius: var(--radius-sm);
+  background: var(--psits-orange-tint);
+  color: var(--chmsu-green-deep);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.grounding-complete strong { color: var(--psits-orange-deep); }
+
 .grounding-steps {
   display: flex;
   flex-direction: column;
@@ -1562,6 +1578,13 @@ body.welcome-overlay-open {
 
 .grounding-reset:hover {
   text-decoration: underline;
+}
+
+.grounding-tab:focus-visible,
+.grounding-steps li > button:focus-visible,
+.grounding-reset:focus-visible {
+  outline: 3px solid var(--psits-orange-light);
+  outline-offset: 2px;
 }
 
 @media (max-width: 500px) {
