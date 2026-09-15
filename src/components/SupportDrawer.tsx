@@ -1,10 +1,22 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Heart, ChevronDown, Phone, ExternalLink } from 'lucide-react';
 
 export const SupportDrawer: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    const openFromHash = () => {
+      if (window.location.hash === '#support-section') {
+        setIsOpen(true);
+      }
+    };
+
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+    return () => window.removeEventListener('hashchange', openFromHash);
+  }, []);
 
   return (
     <section

@@ -2223,6 +2223,8 @@ body.welcome-overlay-open {
 
 .crisis-floating-panel {
   width: min(320px, calc(100vw - 28px));
+  max-height: min(70vh, 520px);
+  overflow-y: auto;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -2286,6 +2288,14 @@ body.welcome-overlay-open {
   text-decoration: none;
 }
 
+.crisis-call-link:focus-visible,
+.crisis-support-link:focus-visible,
+.crisis-floating-close:focus-visible,
+.crisis-floating-button:focus-visible {
+  outline: 3px solid var(--psits-orange-light);
+  outline-offset: 3px;
+}
+
 .crisis-call-link {
   background: var(--psits-orange-tint);
   border: 1px solid var(--psits-orange-border);
@@ -2312,10 +2322,21 @@ body.welcome-overlay-open {
   .crisis-floating-control {
     right: 14px;
     bottom: 62px;
+    max-width: calc(100vw - 28px);
   }
 
   .crisis-floating-button {
     padding: 11px;
+  }
+
+  .crisis-floating-panel {
+    width: min(320px, calc(100vw - 28px));
+    padding: 14px;
+  }
+
+  .crisis-call-link,
+  .crisis-support-link {
+    width: 100%;
   }
 
   .crisis-floating-button span {
