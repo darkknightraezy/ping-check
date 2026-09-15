@@ -60,6 +60,13 @@ export const BreathingPacer: React.FC<BreathingPacerProps> = ({ onClose }) => {
     setIsActive((prev) => !prev);
   };
 
+  const stopExercise = () => {
+    setIsActive(false);
+    setHasStarted(false);
+    setPhase('inhale');
+    setSecondsLeft(4);
+  };
+
   const getPhaseLabel = () => {
     if (!hasStarted) return 'Ready when you are';
 
@@ -123,6 +130,16 @@ export const BreathingPacer: React.FC<BreathingPacerProps> = ({ onClose }) => {
         >
           {!hasStarted ? 'Start Exercise' : isActive ? 'Pause Exercise' : 'Resume Exercise'}
         </button>
+        {hasStarted && (
+          <button
+            id="btn-breathing-stop"
+            className="btn-breathing-toggle"
+            type="button"
+            onClick={stopExercise}
+          >
+            Stop Exercise
+          </button>
+        )}
       </div>
     </section>
   );

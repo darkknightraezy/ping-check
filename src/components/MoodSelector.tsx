@@ -59,7 +59,7 @@ export const MoodSelector: React.FC<MoodSelectorProps> = ({
           aria-controls="breathing-card"
         >
           <Wind size={16} aria-hidden="true" />
-          <span>Take a Mindful Breath</span>
+          <span>{breathingActive ? 'Close Mindful Breath' : 'Take a Mindful Breath'}</span>
         </button>
 
         <button
