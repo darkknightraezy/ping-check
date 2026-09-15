@@ -25,8 +25,19 @@ export const FeedbackPrompt: React.FC = () => {
     }
 
     let hasTriggered = false;
+    const canShowPrompt = () => {
+      const blockingSelectors = [
+        'body.welcome-overlay-open',
+        '#breathing-card',
+        '#venting-card',
+        '#grounding-card',
+        '#support-drawer',
+      ];
+      return !blockingSelectors.some((selector) => document.querySelector(selector));
+    };
+
     const showPrompt = () => {
-      if (hasTriggered) return;
+      if (hasTriggered || !canShowPrompt()) return;
       hasTriggered = true;
       setIsVisible(true);
       window.removeEventListener('scroll', handleScroll);
@@ -134,4 +145,3 @@ export const FeedbackPrompt: React.FC = () => {
 };
 
 export default FeedbackPrompt;
-
