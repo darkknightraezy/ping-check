@@ -5,6 +5,15 @@ import Link from 'next/link';
 import { Wind, MessageSquareHeart, Info, Lock, Sparkles } from 'lucide-react';
 import { MoodKey, MoodOption, SUPPORTED_MOODS } from '@/lib/types';
 
+const moodEmojis: Record<MoodKey, string> = {
+  sad: '😔',
+  tired: '😴',
+  disconnected: '🌫️',
+  heavy: '🪨',
+  broken: '💔',
+  loss: '🕊️',
+};
+
 interface MoodSelectorProps {
   onSelectMood: (moodKey: MoodKey, moodLabel: string) => void;
   onToggleBreathing: () => void;
@@ -42,6 +51,9 @@ export const MoodSelector: React.FC<MoodSelectorProps> = ({
             onClick={() => onSelectMood(mood.key, mood.label)}
             aria-label={`Select mood: ${mood.label}. ${mood.description}`}
           >
+            <span className="mood-emoji" aria-hidden="true">
+              {moodEmojis[mood.key]}
+            </span>
             <span className="mood-name">{mood.label}</span>
             <span className="mood-desc">{mood.description}</span>
           </button>

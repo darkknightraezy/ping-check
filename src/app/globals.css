@@ -758,7 +758,17 @@ body.welcome-overlay-open {
   transform: translateY(-1px);
   box-shadow: var(--shadow-sm);
 }
-
+.btn-mood .mood-emoji {
+  font-size: 1.3rem;
+  line-height: 1;
+  opacity: 0.86;
+  filter: saturate(0.9);
+  transition: transform var(--duration-normal) var(--ease-calm), opacity var(--duration-normal) var(--ease-calm);
+}
+.btn-mood:hover .mood-emoji {
+  opacity: 1;
+  transform: scale(1.08);
+}
 .btn-mood .mood-name {
   font-family: var(--font-serif);
   font-size: 1.35rem;
