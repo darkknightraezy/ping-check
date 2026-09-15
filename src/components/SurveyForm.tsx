@@ -28,6 +28,7 @@ export const SurveyForm: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [helpfulnessLevel, setHelpfulnessLevel] = useState(3);
   const [answers, setAnswers] = useState<SurveyAnswers>(initialAnswers);
 
   useEffect(() => {
@@ -112,13 +113,31 @@ export const SurveyForm: React.FC = () => {
           <p className="survey-privacy">Anonymous and optional. Answers are aggregated for improvement. Please do not include names, student numbers, contact details, or private journal entries.</p>
           <fieldset>
             <legend>How helpful was Ping Check today?</legend>
-            <div className="survey-options survey-options-inline">
-              {helpfulnessOptions.map((option) => (
-                <label key={option} className="survey-option">
-                  <input type="radio" name="helpfulness" value={option} checked={answers.helpfulness === option} onChange={() => updateAnswer('helpfulness', option)} />
-                  <span>{option}</span>
-                </label>
-              ))}
+            <div className="survey-slider-wrap">
+              <div className="survey-slider-value" aria-live="polite">
+                <span className="survey-slider-signal">{helpfulnessLevel}/5 signal</span>
+                <strong>{answers.helpfulness || 'Move the signal to rate'}</strong>
+              </div>
+              <input
+                className="survey-slider"
+                type="range"
+                name="helpfulness"
+                min="1"
+                max="5"
+                step="1"
+                value={helpfulnessLevel}
+                onChange={(event) => {
+                  const level = Number(event.target.value);
+                  setHelpfulnessLevel(level);
+                  updateAnswer('helpfulness', helpfulnessOptions[level - 1]);
+                }}
+                aria-label="Rate how helpful Ping Check was from 1 to 5"
+                aria-valuetext={`${helpfulnessLevel} out of 5: ${answers.helpfulness || 'not rated'}`}
+              />
+              <div className="survey-slider-labels" aria-hidden="true">
+                <span>Low signal</span>
+                <span>Full bars</span>
+              </div>
             </div>
           </fieldset>
           <fieldset>
