@@ -11,6 +11,7 @@ import { SupportDrawer } from '@/components/SupportDrawer';
 import { Toast } from '@/components/Toast';
 import { LocalCheckIn, MoodHistory } from '@/components/MoodHistory';
 import { GroundingLibrary } from '@/components/GroundingLibrary';
+import { FeedbackPrompt } from '@/components/FeedbackPrompt';
 
 const defaultQuotes = moodQuotesData as MoodQuotesRegistry;
 const MOOD_HISTORY_STORAGE_KEY = 'ping-check-local-history-v1';
@@ -174,6 +175,9 @@ export default function HomePage() {
 
       {/* Toast Notification */}
       <Toast message={toastMessage} />
+
+      {/* One-time signal-strength feedback prompt */}
+      <FeedbackPrompt />
     </>
   );
 }
