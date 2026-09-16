@@ -12,6 +12,7 @@ export const Header: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="logo-container psits-badge"
+          aria-label="Visit CHMSU PSITS on Facebook"
           title="Visit CHMSU PSITS on Facebook"
         >
           <Image
@@ -34,6 +35,7 @@ export const Header: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="logo-container psych-badge"
+          aria-label="Visit CHMSU Psychological Society on Facebook"
           title="Visit CHMSU Psychological Society on Facebook"
         >
           <Image

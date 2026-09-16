@@ -414,6 +414,11 @@ body.welcome-overlay-open {
   transform: scale(0.97);
 }
 
+.logo-container:focus-visible {
+  outline: 3px solid var(--psits-orange);
+  outline-offset: 4px;
+}
+
 .psits-badge {
   border: 3px solid var(--chmsu-green);
   box-shadow: 0 6px 20px rgba(21, 115, 62, 0.18), 0 2px 6px rgba(228, 106, 33, 0.1);
@@ -436,6 +441,12 @@ body.welcome-overlay-open {
   font-weight: 800;
   color: var(--psits-orange);
   opacity: 0.85;
+  transition: transform var(--duration-gentle) var(--ease-calm), color var(--duration-gentle) var(--ease-calm);
+}
+
+.partnership-lockup:hover .collab-sym {
+  color: var(--chmsu-green);
+  transform: scale(1.12) rotate(90deg);
 }
 
 .brand-logo {
@@ -576,6 +587,12 @@ body.welcome-overlay-open {
 .calm-signal-lockup:focus-within .calm-signal-mark {
   transform: translateY(-3px) rotate(-2deg);
   box-shadow: 0 12px 25px rgba(21, 115, 62, 0.18), 0 5px 12px rgba(228, 106, 33, 0.14);
+}
+
+.calm-signal-lockup:focus-within {
+  outline: 3px solid rgba(228, 106, 33, 0.3);
+  outline-offset: 8px;
+  border-radius: var(--radius-md);
 }
 
 .calm-signal-mark svg {
