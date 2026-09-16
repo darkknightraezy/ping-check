@@ -378,6 +378,7 @@ body.welcome-overlay-open {
    Header & Emblem Presentation
    =================================================================== */
 .header {
+  width: 100%;
   text-align: center;
   padding-top: var(--space-2);
   display: flex;
@@ -407,6 +408,10 @@ body.welcome-overlay-open {
 
 .logo-container:hover {
   transform: scale(1.06);
+}
+
+.logo-container:active {
+  transform: scale(0.97);
 }
 
 .psits-badge {
@@ -547,6 +552,7 @@ body.welcome-overlay-open {
   align-items: center;
   gap: 13px;
   margin-top: 2px;
+  max-width: 100%;
   text-align: left;
 }
 
@@ -589,7 +595,7 @@ body.welcome-overlay-open {
 .calm-signal-orbit { position: absolute; border: 1px solid var(--psits-orange-border); border-radius: 50%; }
 .calm-signal-orbit-one { width: 46px; height: 46px; animation: calmSignalOrbitOne 7s ease-in-out 900ms infinite; }
 .calm-signal-orbit-two { width: 58px; height: 58px; border-color: var(--chmsu-green-border); animation: calmSignalOrbitTwo 9s ease-in-out 1.1s infinite; }
-.calm-signal-wordmark { display: flex; flex-direction: column; gap: 1px; }
+.calm-signal-wordmark { min-width: 0; display: flex; flex-direction: column; gap: 1px; }
 .calm-signal-kicker { color: var(--psits-orange-deep); font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; animation: calmSignalTextEnter 600ms var(--ease-calm) 180ms both; }
 
 @keyframes calmSignalEnter {
@@ -629,6 +635,7 @@ body.welcome-overlay-open {
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
+  white-space: nowrap;
   color: transparent;
   background: linear-gradient(110deg, var(--chmsu-green-deep) 12%, var(--chmsu-green-light) 46%, var(--psits-orange) 64%, var(--chmsu-green-deep) 88%);
   background-size: 220% auto;
@@ -679,12 +686,18 @@ body.welcome-overlay-open {
 }
 
 @media (max-width: 500px) {
+  .partnership-lockup { gap: 8px; }
+  .logo-container { width: 64px; height: 64px; }
+  .partnership-divider .collab-sym { font-size: 1rem; }
+  .brand-affiliation { max-width: 100%; padding: 5px 10px; }
+  .brand-eyebrow { font-size: 0.61rem; letter-spacing: 0.045em; }
   .calm-signal-lockup { gap: 10px; }
   .calm-signal-mark { width: 58px; height: 58px; border-radius: 19px; }
   .calm-signal-mark svg { width: 34px; height: 34px; }
   .calm-signal-orbit-one { width: 40px; height: 40px; }
   .calm-signal-orbit-two { width: 51px; height: 51px; }
   .calm-signal-kicker { font-size: 0.58rem; }
+  .partnership-tagline { max-width: 100%; padding: 0 8px; font-size: 0.78rem; line-height: 1.4; }
 }
 .app-subtitle {
   font-size: clamp(1.02rem, 3vw, 1.15rem);
