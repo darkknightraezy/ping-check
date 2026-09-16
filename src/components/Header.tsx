@@ -52,7 +52,20 @@ export const Header: React.FC = () => {
         <span className="brand-eyebrow">CHMSU PSITS × CHMSU Psychological Society</span>
       </div>
 
-      <h1 className="app-title">Ping Check</h1>
+      <div className="calm-signal-lockup">
+        <div className="calm-signal-mark" aria-hidden="true">
+          <span className="calm-signal-orbit calm-signal-orbit-one" />
+          <span className="calm-signal-orbit calm-signal-orbit-two" />
+          <svg viewBox="0 0 48 48" role="presentation">
+            <path d="M24 37.5S9.5 29.4 9.5 18.7A8.2 8.2 0 0 1 24 13.5a8.2 8.2 0 0 1 14.5 5.2C38.5 29.4 24 37.5 24 37.5Z" />
+            <circle cx="24" cy="23" r="3.2" />
+          </svg>
+        </div>
+        <div className="calm-signal-wordmark">
+          <span className="calm-signal-kicker">Your gentle signal</span>
+          <h1 className="app-title">Ping Check</h1>
+        </div>
+      </div>
       <div className="connection-prompt-float" role="note" aria-label="Self-connection check-in prompt">
         <span className="connection-prompt-label">A gentle check-in</span>
         <p className="connection-prompt-question">How&apos;s your connection with yourself today?</p>

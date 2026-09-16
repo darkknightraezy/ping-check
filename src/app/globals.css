@@ -542,6 +542,48 @@ body.welcome-overlay-open {
   color: var(--chmsu-green-deep);
 }
 
+.calm-signal-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 2px;
+  text-align: left;
+}
+
+.calm-signal-mark {
+  position: relative;
+  width: 66px;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border: 1.5px solid rgba(21, 115, 62, 0.35);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(238, 248, 242, 0.96), rgba(253, 232, 216, 0.9));
+  box-shadow: 0 8px 20px rgba(21, 115, 62, 0.14), 0 3px 8px rgba(228, 106, 33, 0.1);
+}
+
+.calm-signal-mark svg {
+  position: relative;
+  z-index: 1;
+  width: 39px;
+  height: 39px;
+  overflow: visible;
+  fill: none;
+  stroke: var(--chmsu-green-deep);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.2;
+}
+
+.calm-signal-mark circle { fill: var(--psits-orange); stroke: var(--psits-orange); }
+.calm-signal-orbit { position: absolute; border: 1px solid var(--psits-orange-border); border-radius: 50%; }
+.calm-signal-orbit-one { width: 46px; height: 46px; }
+.calm-signal-orbit-two { width: 58px; height: 58px; border-color: var(--chmsu-green-border); }
+.calm-signal-wordmark { display: flex; flex-direction: column; gap: 1px; }
+.calm-signal-kicker { color: var(--psits-orange-deep); font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+
 .app-title {
   position: relative;
   font-family: var(--font-serif);
@@ -562,7 +604,7 @@ body.welcome-overlay-open {
   display: block;
   width: 52px;
   height: 4px;
-  margin: 10px auto 0;
+  margin: 8px 0 0;
   border-radius: var(--radius-full);
   background: linear-gradient(90deg, var(--chmsu-green), var(--psits-orange));
   box-shadow: 0 3px 10px rgba(228, 106, 33, 0.18);
@@ -586,10 +628,23 @@ body.welcome-overlay-open {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .calm-signal-mark,
+  .calm-signal-orbit {
+    animation: none;
+  }
   .app-title,
   .app-title::after {
     animation: none;
   }
+}
+
+@media (max-width: 500px) {
+  .calm-signal-lockup { gap: 10px; }
+  .calm-signal-mark { width: 58px; height: 58px; border-radius: 19px; }
+  .calm-signal-mark svg { width: 34px; height: 34px; }
+  .calm-signal-orbit-one { width: 40px; height: 40px; }
+  .calm-signal-orbit-two { width: 51px; height: 51px; }
+  .calm-signal-kicker { font-size: 0.58rem; }
 }
 .app-subtitle {
   font-size: clamp(1.02rem, 3vw, 1.15rem);
