@@ -709,7 +709,7 @@ body.identity-gate-open {
 .calm-signal-orbit { position: absolute; border: 1px solid var(--psits-orange-border); border-radius: 50%; }
 .calm-signal-orbit-one { width: 46px; height: 46px; animation: calmSignalOrbitOne 7s ease-in-out 900ms infinite; }
 .calm-signal-orbit-two { width: 58px; height: 58px; border-color: var(--chmsu-green-border); animation: calmSignalOrbitTwo 9s ease-in-out 1.1s infinite; }
-.calm-signal-wordmark { min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.calm-signal-wordmark { position: relative; min-width: 0; display: flex; flex-direction: column; gap: 1px; padding: 5px 10px 8px 0; }
 .calm-signal-kicker { color: var(--psits-orange-deep); font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; animation: calmSignalTextEnter 600ms var(--ease-calm) 180ms both; }
 
 @keyframes calmSignalEnter {
@@ -751,11 +751,20 @@ body.identity-gate-open {
   line-height: 1.1;
   white-space: nowrap;
   color: transparent;
+  -webkit-text-stroke: 0.65px rgba(13, 78, 39, 0.28);
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.68), 0 5px 16px rgba(13, 78, 39, 0.15);
   background: linear-gradient(110deg, var(--chmsu-green-deep) 12%, var(--chmsu-green-light) 46%, var(--psits-orange) 64%, var(--chmsu-green-deep) 88%);
   background-size: 220% auto;
   background-clip: text;
   -webkit-background-clip: text;
   animation: titleEnter 700ms var(--ease-calm) both, titleShimmer 8s ease-in-out 700ms infinite;
+}
+
+.app-title:hover,
+.calm-signal-lockup:focus-within .app-title {
+  -webkit-text-stroke-color: rgba(228, 106, 33, 0.58);
+  filter: drop-shadow(0 4px 8px rgba(228, 106, 33, 0.2));
+  animation: titleEnter 700ms var(--ease-calm) both, titleShimmer 8s ease-in-out 700ms infinite, titlePulse 1.8s ease-in-out infinite;
 }
 
 .app-title::after {
@@ -784,6 +793,11 @@ body.identity-gate-open {
 @keyframes titleUnderline {
   from { opacity: 0; transform: scaleX(0.35); }
   to { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes titlePulse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
