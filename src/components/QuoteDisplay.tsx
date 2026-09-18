@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ArrowLeft, Clock, Home } from 'lucide-react';
+import { Clock, Home } from 'lucide-react';
 import { MoodKey, MoodQuote, MoodOption, SUPPORTED_MOODS } from '@/lib/types';
 import { ReflectionJournal } from '@/components/ReflectionJournal';
 
@@ -110,16 +110,6 @@ export const QuoteDisplay: React.FC<QuoteDisplayProps> = ({
           >
             <Home size={16} aria-hidden="true" />
             <span>Back to Home</span>
-          </button>
-          <button
-            id="btn-back"
-            className="btn-secondary"
-            type="button"
-            onClick={onBack}
-            aria-label="Return to mood selection"
-          >
-            <ArrowLeft size={16} aria-hidden="true" />
-            <span>Check in with another feeling</span>
           </button>
         </div>
       </div>
