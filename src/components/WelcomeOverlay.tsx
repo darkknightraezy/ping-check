@@ -24,7 +24,10 @@ export const WelcomeOverlay: React.FC = () => {
   const enterPingCheck = () => {
     if (!termsChecked) return;
     setIsClosing(true);
-    window.setTimeout(() => setIsOpen(false), 320);
+    window.setTimeout(() => {
+      setIsOpen(false);
+      window.dispatchEvent(new CustomEvent('ping-check:agreement-complete'));
+    }, 320);
   };
 
   const openPrivacy = (event: React.MouseEvent<HTMLAnchorElement>) => {

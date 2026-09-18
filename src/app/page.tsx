@@ -15,6 +15,7 @@ import { FeedbackPrompt } from '@/components/FeedbackPrompt';
 import { CommunityInsights } from '@/components/CommunityInsights';
 import { SurveyForm } from '@/components/SurveyForm';
 import { SurveyInsights } from '@/components/SurveyInsights';
+import { EmotionCheckInGate } from '@/components/EmotionCheckInGate';
 
 const defaultQuotes = moodQuotesData as MoodQuotesRegistry;
 const MOOD_HISTORY_STORAGE_KEY = 'ping-check-local-history-v1';
@@ -25,6 +26,7 @@ export default function HomePage() {
   const [selectedMoodLabel, setSelectedMoodLabel] = useState<string>('');
   const [quoteData, setQuoteData] = useState<MoodQuote | null>(null);
   const [moodHistory, setMoodHistory] = useState<LocalCheckIn[]>([]);
+  const [showMandatoryEmotionGate, setShowMandatoryEmotionGate] = useState(false);
 
   // Quick Tools Visibility
   const [showBreathing, setShowBreathing] = useState<boolean>(false);
@@ -60,6 +62,12 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
+    const openEmotionGate = () => setShowMandatoryEmotionGate(true);
+    window.addEventListener('ping-check:agreement-complete', openEmotionGate);
+    return () => window.removeEventListener('ping-check:agreement-complete', openEmotionGate);
+  }, []);
+
+  useEffect(() => {
     try {
       const stored = window.localStorage.getItem(MOOD_HISTORY_STORAGE_KEY);
       if (stored) {
@@ -82,6 +90,7 @@ export default function HomePage() {
 
   const handleSelectMood = useCallback(
     (moodKey: MoodKey, moodLabel: string) => {
+      setShowMandatoryEmotionGate(false);
       setSelectedMood(moodKey);
       setSelectedMoodLabel(moodLabel);
       saveMoodHistory([
@@ -130,6 +139,9 @@ export default function HomePage() {
 
   return (
     <>
+      {showMandatoryEmotionGate && (
+        <EmotionCheckInGate onSelectMood={handleSelectMood} />
+      )}
       {/* View 1: Mood Selector (if no mood selected) */}
       {!selectedMood || !quoteData ? (
         <MoodSelector
