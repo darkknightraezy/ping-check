@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { ArrowLeft, Clock } from 'lucide-react';
-import { MoodKey, MoodQuote } from '@/lib/types';
+import { ArrowLeft, Clock, Home } from 'lucide-react';
+import { MoodKey, MoodQuote, MoodOption, SUPPORTED_MOODS } from '@/lib/types';
 import { ReflectionJournal } from '@/components/ReflectionJournal';
 
 interface QuoteDisplayProps {
@@ -10,13 +10,24 @@ interface QuoteDisplayProps {
   moodLabel: string;
   quoteData: MoodQuote;
   onBack: () => void;
+  onSelectMood: (moodKey: MoodKey, moodLabel: string) => void;
 }
+
+const moodEmojis: Record<MoodKey, string> = {
+  sad: '😔',
+  tired: '😴',
+  disconnected: '🌫️',
+  heavy: '🪨',
+  broken: '💔',
+  loss: '🕊️',
+};
 
 export const QuoteDisplay: React.FC<QuoteDisplayProps> = ({
   moodKey,
   moodLabel,
   quoteData,
   onBack,
+  onSelectMood,
 }) => {
   return (
     <section
@@ -65,7 +76,41 @@ export const QuoteDisplay: React.FC<QuoteDisplayProps> = ({
 
         <ReflectionJournal moodKey={moodKey} moodLabel={moodLabel} />
 
+        <div className="emotion-quick-access" aria-labelledby="emotion-quick-access-title">
+          <div className="emotion-quick-access-heading">
+            <span className="emotion-quick-access-kicker">Quick check-in</span>
+            <h3 id="emotion-quick-access-title">Choose another feeling</h3>
+          </div>
+          <div className="emotion-quick-access-grid">
+            {SUPPORTED_MOODS.map((mood: MoodOption) => (
+              <button
+                key={mood.key}
+                type="button"
+                className={`emotion-quick-button ${mood.key === moodKey ? 'selected' : ''}`}
+                onClick={() => onSelectMood(mood.key, mood.label)}
+                aria-label={`${mood.label}: ${mood.description}`}
+                aria-current={mood.key === moodKey ? 'true' : undefined}
+              >
+                <span className="emotion-quick-emoji" aria-hidden="true">{moodEmojis[mood.key]}</span>
+                <span className="emotion-quick-copy">
+                  <strong>{mood.label}</strong>
+                  <small>{mood.description}</small>
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="quote-actions">
+          <button
+            className="btn-secondary quote-home-button"
+            type="button"
+            onClick={onBack}
+            aria-label="Return to Ping Check home"
+          >
+            <Home size={16} aria-hidden="true" />
+            <span>Back to Home</span>
+          </button>
           <button
             id="btn-back"
             className="btn-secondary"

@@ -160,6 +160,7 @@ export default function HomePage() {
           moodLabel={selectedMoodLabel}
           quoteData={quoteData}
           onBack={handleBackToMoods}
+          onSelectMood={handleSelectMood}
         />
       )}
 
