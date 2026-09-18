@@ -218,7 +218,7 @@ body.identity-gate-open {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
   background: rgba(13, 45, 27, 0.42);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -227,7 +227,7 @@ body.identity-gate-open {
 
 .emotion-gate-window {
   width: min(100%, 470px);
-  max-height: calc(100vh - 40px);
+  max-height: min(calc(100vh - 24px), calc(100dvh - 24px));
   overflow-y: auto;
   padding: 28px 24px 22px;
   border: 1.5px solid rgba(255, 255, 255, 0.82);
@@ -241,14 +241,14 @@ body.identity-gate-open {
 .emotion-gate-kicker { color: var(--psits-orange-deep); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
 .emotion-gate-window h2 { margin-top: 7px; color: var(--chmsu-green-deep); font-family: var(--font-serif); font-size: clamp(1.35rem, 5vw, 1.7rem); line-height: 1.2; }
 .emotion-gate-lead { max-width: 380px; margin: 9px auto 0; color: var(--color-text-secondary); font-size: 0.84rem; line-height: 1.5; }
-.emotion-gate-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; margin-top: 19px; }
-.emotion-gate-choice { min-height: 70px; display: flex; align-items: center; gap: 9px; padding: 11px 12px; border: 1.5px solid var(--chmsu-green-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--chmsu-green-deep); text-align: left; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(21, 115, 62, 0.16); transition: transform var(--duration-normal) var(--ease-calm), border-color var(--duration-normal) var(--ease-calm), background-color var(--duration-normal) var(--ease-calm), box-shadow var(--duration-normal) var(--ease-calm); }
+.emotion-gate-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(7px, 2vw, 10px); margin-top: clamp(15px, 4vw, 19px); }
+.emotion-gate-choice { min-width: 0; min-height: clamp(58px, 10vw, 70px); display: flex; align-items: center; gap: clamp(6px, 2vw, 9px); padding: clamp(9px, 2.5vw, 11px) clamp(8px, 3vw, 12px); border: 1.5px solid var(--chmsu-green-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--chmsu-green-deep); text-align: left; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(21, 115, 62, 0.16); transition: transform var(--duration-normal) var(--ease-calm), border-color var(--duration-normal) var(--ease-calm), background-color var(--duration-normal) var(--ease-calm), box-shadow var(--duration-normal) var(--ease-calm); }
 .emotion-gate-choice:nth-child(even) { color: var(--psits-orange-deep); }
 .emotion-gate-choice:hover, .emotion-gate-choice:focus-visible { transform: translateY(-2px); border-color: var(--chmsu-green); background: var(--chmsu-green-tint); box-shadow: var(--shadow-card); }
 .emotion-gate-choice:nth-child(even):hover, .emotion-gate-choice:nth-child(even):focus-visible { border-color: var(--psits-orange); background: var(--psits-orange-tint); }
 .emotion-gate-choice:active { transform: translateY(0); }
-.emotion-gate-emoji { flex: 0 0 auto; font-size: 1.45rem; line-height: 1; }
-.emotion-gate-name { font-family: var(--font-serif); font-size: clamp(0.98rem, 4vw, 1.15rem); font-weight: 700; }
+.emotion-gate-emoji { flex: 0 0 auto; font-size: clamp(1.18rem, 5vw, 1.45rem); line-height: 1; }
+.emotion-gate-name { min-width: 0; font-family: var(--font-serif); font-size: clamp(0.82rem, 4vw, 1.15rem); font-weight: 700; line-height: 1.12; overflow-wrap: anywhere; word-break: break-word; }
 .emotion-gate-note { margin: 15px auto 0; color: var(--color-text-muted); font-size: 0.68rem; line-height: 1.45; }
 
 .identity-gate-backdrop {
@@ -294,10 +294,13 @@ body.identity-gate-open {
 .identity-gate-submit:disabled { cursor: not-allowed; opacity: 0.5; }
 
 @media (max-width: 380px) {
-  .emotion-gate-backdrop { padding: 12px; }
-  .emotion-gate-window { padding: 23px 15px 18px; border-radius: 20px; }
-  .emotion-gate-grid { grid-template-columns: 1fr; gap: 7px; margin-top: 15px; }
-  .emotion-gate-choice { min-height: 56px; padding: 9px 12px; }
+  .emotion-gate-window { padding: 22px 14px 17px; border-radius: 20px; }
+  .emotion-gate-window h2 { font-size: 1.35rem; }
+  .emotion-gate-lead { font-size: 0.78rem; }
+  .emotion-gate-grid { gap: 7px; margin-top: 14px; }
+  .emotion-gate-choice { min-height: 56px; padding: 8px 9px; border-radius: 12px; }
+  .emotion-gate-emoji { font-size: 1.12rem; }
+  .emotion-gate-name { font-size: 0.84rem; }
 }
 
 .welcome-window-icon {
