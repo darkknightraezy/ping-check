@@ -23,50 +23,12 @@ const helpfulnessOptions = ['Not helpful', 'A little helpful', 'Somewhat helpful
 const featureOptions = ['Mood check-in', 'Reflection journal', 'Breathing exercise', 'Grounding activity', 'Support resources', 'Other'];
 const reuseOptions = ['Yes', 'Maybe', 'No'];
 
-interface SurveySliderProps {
-  name: string;
-  value: number;
-  options: string[];
-  placeholder: string;
-  onChange: (value: number) => void;
-  ariaLabel: string;
-}
-
-const SurveySlider: React.FC<SurveySliderProps> = ({ name, value, options, placeholder, onChange, ariaLabel }) => {
-  const selected = options[value - 1];
-  return (
-    <div className="survey-slider-wrap">
-      <div className="survey-slider-value" aria-live="polite">
-        <span className="survey-slider-signal">{value}/{options.length} signal</span>
-        <strong>{selected || placeholder}</strong>
-      </div>
-      <input
-        className="survey-slider"
-        type="range"
-        name={name}
-        min="1"
-        max={options.length}
-        step="1"
-        value={value}
-        onChange={(event) => onChange(Number(event.target.value))}
-        aria-label={ariaLabel}
-        aria-valuetext={`${value} of ${options.length}: ${selected || 'not selected'}`}
-      />
-      <div className="survey-slider-labels" aria-hidden="true">
-        <span>{options[0]}</span>
-        <span>{options[options.length - 1]}</span>
-      </div>
-    </div>
-  );
-};
-
 export const SurveyForm: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [helpfulnessLevel, setHelpfulnessLevel] = useState(3);
-  const [reuseLevel, setReuseLevel] = useState(2);
   const [answers, setAnswers] = useState<SurveyAnswers>(initialAnswers);
 
   useEffect(() => {
@@ -191,14 +153,14 @@ export const SurveyForm: React.FC = () => {
           </fieldset>
           <fieldset>
             <legend>Would you use Ping Check again?</legend>
-            <SurveySlider
-              name="reuse"
-              value={reuseLevel}
-              options={reuseOptions}
-              placeholder="Choose an answer"
-              onChange={(level) => { setReuseLevel(level); updateAnswer('reuse', reuseOptions[level - 1]); }}
-              ariaLabel="Choose whether you would use Ping Check again"
-            />
+            <div className="survey-feature-choices survey-reuse-choices" role="radiogroup" aria-label="Choose whether you would use Ping Check again">
+              {reuseOptions.map((option) => (
+                <label key={option} className="survey-feature-choice">
+                  <input type="radio" name="reuse" value={option} checked={answers.reuse === option} onChange={() => updateAnswer('reuse', option)} />
+                  <span>{option}</span>
+                </label>
+              ))}
+            </div>
           </fieldset>
           <label className="survey-text-label" htmlFor="survey-improvement">What could make Ping Check better? <span>(optional)</span></label>
           <textarea id="survey-improvement" value={answers.improvement} onChange={(event) => updateAnswer('improvement', event.target.value)} maxLength={500} rows={3} placeholder="A small idea, request, or encouragement..." />

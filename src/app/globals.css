@@ -1280,6 +1280,7 @@ body.identity-gate-open {
 .survey-feature-choice span:hover { border-color: var(--chmsu-green); background: var(--chmsu-green-tint); color: var(--chmsu-green-deep); }
 .survey-feature-choice input:checked + span { border-color: var(--chmsu-green); background: var(--chmsu-green); color: #FFFFFF; font-weight: 700; }
 .survey-feature-choice input:focus-visible + span { outline: 3px solid var(--psits-orange-light); outline-offset: 2px; }
+.survey-reuse-choices { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .survey-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; }
 .survey-options-inline { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .survey-options-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
