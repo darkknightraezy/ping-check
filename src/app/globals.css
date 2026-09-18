@@ -3582,3 +3582,45 @@ body.identity-gate-open {
     scroll-behavior: auto !important;
   }
 }
+
+/* Private admin dashboard */
+.admin-page { min-height: 100vh; padding: 32px 18px; background: linear-gradient(145deg, #edf8f0 0%, #fff8f0 100%); color: var(--color-text-primary); }
+.admin-card, .admin-shell { width: min(100%, 980px); margin: 0 auto; border: 1px solid var(--chmsu-green-border); border-radius: 24px; background: rgba(255, 255, 255, 0.94); box-shadow: var(--shadow-elevated); }
+.admin-login-card { max-width: 470px; padding: 34px 28px; text-align: center; }
+.admin-icon { width: 54px; height: 54px; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--chmsu-green); background: var(--chmsu-green-tint); border: 1px solid var(--chmsu-green-border); }
+.admin-kicker { color: var(--psits-orange-deep); font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.admin-card h1, .admin-shell h1 { margin-top: 7px; color: var(--chmsu-green-deep); font-family: var(--font-serif); font-size: clamp(1.45rem, 4vw, 2rem); }
+.admin-card > p { margin-top: 9px; color: var(--color-text-secondary); font-size: 0.84rem; line-height: 1.5; }
+.admin-login-form { display: flex; flex-direction: column; gap: 13px; margin-top: 22px; text-align: left; }
+.admin-login-form label { display: flex; flex-direction: column; gap: 6px; color: var(--chmsu-green-deep); font-size: 0.78rem; font-weight: 700; }
+.admin-login-form input { min-height: 44px; padding: 10px 12px; border: 1.5px solid var(--chmsu-green-border); border-radius: var(--radius-sm); background: #fff; color: var(--color-text-primary); font: inherit; }
+.admin-login-form input:focus { outline: none; border-color: var(--chmsu-green); box-shadow: 0 0 0 3px var(--chmsu-green-glow); }
+.admin-primary-button, .admin-logout-button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; border: 0; border-radius: var(--radius-full); font-weight: 700; cursor: pointer; }
+.admin-primary-button { min-height: 44px; margin-top: 4px; background: var(--chmsu-green); color: #fff; }
+.admin-primary-button:hover { background: var(--chmsu-green-hover); }
+.admin-error { padding: 9px 10px; border-radius: var(--radius-sm); background: #fff0ed; color: #9c321c; font-size: 0.76rem; }
+.admin-security-note, .admin-footer-note { color: var(--color-text-muted) !important; font-size: 0.7rem !important; }
+.admin-shell { padding: 25px; }
+.admin-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--chmsu-green-border); }
+.admin-header p { margin-top: 6px; color: var(--color-text-secondary); font-size: 0.78rem; }
+.admin-logout-button { min-height: 36px; padding: 7px 13px; border: 1px solid var(--chmsu-green-border); background: var(--color-surface); color: var(--chmsu-green-deep); font-size: 0.75rem; }
+.admin-stat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+.admin-stat { padding: 16px; border-radius: var(--radius-md); background: linear-gradient(135deg, var(--chmsu-green-tint), var(--psits-orange-tint)); }
+.admin-stat span, .admin-stat small { display: block; color: var(--color-text-secondary); font-size: 0.72rem; }
+.admin-stat strong { display: block; margin: 4px 0; color: var(--chmsu-green-deep); font-family: var(--font-serif); font-size: 1.8rem; }
+.admin-report-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+.admin-report-card { padding: 16px; border: 1px solid var(--chmsu-green-border); border-radius: var(--radius-md); background: #fff; }
+.admin-report-card h2 { margin-bottom: 13px; color: var(--chmsu-green-deep); font-family: var(--font-serif); font-size: 1rem; }
+.admin-bars { display: flex; flex-direction: column; gap: 11px; }
+.admin-bar-row > div:first-child { display: flex; justify-content: space-between; gap: 10px; color: var(--color-text-secondary); font-size: 0.73rem; }
+.admin-bar-row strong { color: var(--psits-orange-deep); }
+.admin-bar-track { height: 7px; margin-top: 5px; overflow: hidden; border-radius: var(--radius-full); background: var(--chmsu-green-tint); }
+.admin-bar-track span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--chmsu-green), var(--psits-orange)); }
+.admin-empty { padding: 40px 15px; text-align: center; color: var(--color-text-secondary); }
+.admin-empty svg { color: var(--psits-orange); }
+.admin-empty h2 { margin-top: 10px; color: var(--chmsu-green-deep); font-family: var(--font-serif); font-size: 1.15rem; }
+.admin-empty p { max-width: 450px; margin: 7px auto 0; font-size: 0.8rem; line-height: 1.5; }
+.admin-muted { color: var(--color-text-muted); font-size: 0.75rem; }
+.admin-footer-note { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--chmsu-green-border); text-align: center; }
+@media (max-width: 620px) { .admin-page { padding: 18px 12px; } .admin-shell { padding: 18px; } .admin-header { flex-direction: column; } .admin-report-grid { grid-template-columns: 1fr; } }
+@media (max-width: 380px) { .admin-stat-grid { grid-template-columns: 1fr; } .admin-login-card { padding: 27px 18px; } }

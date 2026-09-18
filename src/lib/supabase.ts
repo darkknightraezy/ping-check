@@ -203,3 +203,67 @@ export async function getCommunityMoodInsights(): Promise<CommunityMoodInsights>
     return unavailable;
   }
 }
+
+export interface AdminAnalytics {
+  available: boolean;
+  windowDays: number;
+  moodTotal: number;
+  moodCounts: Array<{ mood: MoodKey; count: number }>;
+  surveyTotal: number;
+  surveyCounts: {
+    helpfulness: Array<{ label: string; count: number }>;
+    features: Array<{ label: string; count: number }>;
+    reuse: Array<{ label: string; count: number }>;
+  };
+}
+
+/**
+ * Admin-only coarse analytics. Raw rows, reflections, IDs, and nicknames are
+ * never returned to the dashboard.
+ */
+export async function getAdminAnalytics(): Promise<AdminAnalytics> {
+  const windowDays = 90;
+  const unavailable: AdminAnalytics = {
+    available: false,
+    windowDays,
+    moodTotal: 0,
+    moodCounts: [],
+    surveyTotal: 0,
+    surveyCounts: { helpfulness: [], features: [], reuse: [] },
+  };
+  if (!supabaseAdmin) return unavailable;
+
+  try {
+    const since = new Date(Date.now() - windowDays * 24 * 60 * 60 * 1000).toISOString();
+    const [{ data: moodRows, error: moodError }, { data: surveyRows, error: surveyError }] = await Promise.all([
+      supabaseAdmin.from('logs').select('mood').gte('created_at', since).limit(5000),
+      supabaseAdmin.from('survey_responses').select('helpfulness,feature,reuse').gte('created_at', since).limit(5000),
+    ]);
+    if (moodError || surveyError || !moodRows || !surveyRows) return unavailable;
+
+    const summarize = (rows: Array<Record<string, string>>, field: string) => {
+      const counts = new Map<string, number>();
+      for (const row of rows) {
+        const value = row[field];
+        if (typeof value === 'string' && value) counts.set(value, (counts.get(value) || 0) + 1);
+      }
+      return Array.from(counts.entries()).map(([label, count]) => ({ label, count })).sort((a, b) => b.count - a.count);
+    };
+
+    return {
+      available: true,
+      windowDays,
+      moodTotal: moodRows.length,
+      moodCounts: summarize(moodRows as Array<Record<string, string>>, 'mood').map(({ label, count }) => ({ mood: label as MoodKey, count })),
+      surveyTotal: surveyRows.length,
+      surveyCounts: {
+        helpfulness: summarize(surveyRows as Array<Record<string, string>>, 'helpfulness'),
+        features: summarize(surveyRows as Array<Record<string, string>>, 'feature'),
+        reuse: summarize(surveyRows as Array<Record<string, string>>, 'reuse'),
+      },
+    };
+  } catch (err) {
+    console.error('[Analytics] Failed to build admin analytics:', err);
+    return unavailable;
+  }
+}
