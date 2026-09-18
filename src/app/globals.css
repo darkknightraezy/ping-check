@@ -3638,3 +3638,18 @@ body.identity-gate-open {
 .admin-footer-note { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--chmsu-green-border); text-align: center; }
 @media (max-width: 620px) { .admin-page { padding: 18px 12px; } .admin-shell { padding: 18px; } .admin-header { flex-direction: column; } .admin-report-grid { grid-template-columns: 1fr; } }
 @media (max-width: 380px) { .admin-stat-grid { grid-template-columns: 1fr; } .admin-login-card { padding: 27px 18px; } }
+/* Active wellness tools take visual priority below the tool bar. */
+.breathing-card,
+.venting-card,
+.grounding-card {
+  scroll-margin-top: 18px;
+  animation: floatIn 0.32s var(--ease-calm);
+}
+
+@media (max-width: 600px) {
+  .breathing-card,
+  .venting-card,
+  .grounding-card {
+    margin-top: var(--space-3);
+  }
+}

@@ -46,6 +46,19 @@ export default function HomePage() {
     }, 3500);
   }, []);
 
+  const activateTool = useCallback((tool: 'breathing' | 'vent' | 'grounding') => {
+    const nextOpen = tool === 'breathing' ? !showBreathing : tool === 'vent' ? !showVent : !showGrounding;
+    setShowBreathing(tool === 'breathing' && nextOpen);
+    setShowVent(tool === 'vent' && nextOpen);
+    setShowGrounding(tool === 'grounding' && nextOpen);
+    if (nextOpen) {
+      window.setTimeout(() => {
+        const targetId = tool === 'vent' ? 'venting-card' : `${tool}-card`;
+        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 60);
+    }
+  }, [showBreathing, showGrounding, showVent]);
+
   // Fetch updated quotes in background if server has updates
   useEffect(() => {
     async function loadFreshQuotes() {
@@ -158,9 +171,9 @@ export default function HomePage() {
       {!selectedMood || !quoteData ? (
         <MoodSelector
           onSelectMood={handleSelectMood}
-          onToggleBreathing={() => setShowBreathing((prev) => !prev)}
-          onToggleVent={() => setShowVent((prev) => !prev)}
-          onToggleGrounding={() => setShowGrounding((prev) => !prev)}
+          onToggleBreathing={() => activateTool('breathing')}
+          onToggleVent={() => activateTool('vent')}
+          onToggleGrounding={() => activateTool('grounding')}
           nickname={checkInProfile?.nickname ?? ''}
           breathingActive={showBreathing}
           ventActive={showVent}
@@ -177,19 +190,10 @@ export default function HomePage() {
         />
       )}
 
-      {!selectedMood && (
-        <MoodHistory entries={moodHistory} onClear={clearMoodHistory} />
-      )}
-      {!selectedMood && <CommunityInsights />}
-      {!selectedMood && <SurveyForm />}
-      {!selectedMood && <SurveyInsights />}
-
-      {/* Somatic Breathing Pacer Card */}
+      {/* The active wellness tool stays immediately below the tool buttons. */}
       {showBreathing && (
         <BreathingPacer onClose={() => setShowBreathing(false)} />
       )}
-
-      {/* Vent & Unburden Space */}
       {showVent && (
         <VentSpace
           selectedMood={selectedMood}
@@ -198,10 +202,16 @@ export default function HomePage() {
         />
       )}
 
-      {/* Grounding Exercise Library */}
       {showGrounding && (
         <GroundingLibrary onClose={() => setShowGrounding(false)} />
       )}
+
+      {!selectedMood && (
+        <MoodHistory entries={moodHistory} onClear={clearMoodHistory} />
+      )}
+      {!selectedMood && <CommunityInsights />}
+      {!selectedMood && <SurveyForm />}
+      {!selectedMood && <SurveyInsights />}
 
       {/* Campus & Crisis Support Drawer */}
       <SupportDrawer />
