@@ -16,6 +16,7 @@ import { CommunityInsights } from '@/components/CommunityInsights';
 import { SurveyForm } from '@/components/SurveyForm';
 import { SurveyInsights } from '@/components/SurveyInsights';
 import { EmotionCheckInGate } from '@/components/EmotionCheckInGate';
+import { CheckInProfile, IdentityProfileGate } from '@/components/IdentityProfileGate';
 
 const defaultQuotes = moodQuotesData as MoodQuotesRegistry;
 const MOOD_HISTORY_STORAGE_KEY = 'ping-check-local-history-v1';
@@ -27,6 +28,8 @@ export default function HomePage() {
   const [quoteData, setQuoteData] = useState<MoodQuote | null>(null);
   const [moodHistory, setMoodHistory] = useState<LocalCheckIn[]>([]);
   const [showMandatoryEmotionGate, setShowMandatoryEmotionGate] = useState(false);
+  const [showIdentityGate, setShowIdentityGate] = useState(false);
+  const [checkInProfile, setCheckInProfile] = useState<CheckInProfile | null>(null);
 
   // Quick Tools Visibility
   const [showBreathing, setShowBreathing] = useState<boolean>(false);
@@ -62,9 +65,15 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-    const openEmotionGate = () => setShowMandatoryEmotionGate(true);
-    window.addEventListener('ping-check:agreement-complete', openEmotionGate);
-    return () => window.removeEventListener('ping-check:agreement-complete', openEmotionGate);
+    const openIdentityGate = () => setShowIdentityGate(true);
+    window.addEventListener('ping-check:agreement-complete', openIdentityGate);
+    return () => window.removeEventListener('ping-check:agreement-complete', openIdentityGate);
+  }, []);
+
+  const handleProfileComplete = useCallback((profile: CheckInProfile) => {
+    setCheckInProfile(profile);
+    setShowIdentityGate(false);
+    setShowMandatoryEmotionGate(true);
   }, []);
 
   useEffect(() => {
@@ -142,6 +151,9 @@ export default function HomePage() {
       {showMandatoryEmotionGate && (
         <EmotionCheckInGate onSelectMood={handleSelectMood} />
       )}
+      {showIdentityGate && (
+        <IdentityProfileGate onComplete={handleProfileComplete} />
+      )}
       {/* View 1: Mood Selector (if no mood selected) */}
       {!selectedMood || !quoteData ? (
         <MoodSelector
@@ -149,6 +161,7 @@ export default function HomePage() {
           onToggleBreathing={() => setShowBreathing((prev) => !prev)}
           onToggleVent={() => setShowVent((prev) => !prev)}
           onToggleGrounding={() => setShowGrounding((prev) => !prev)}
+          nickname={checkInProfile?.nickname ?? ''}
           breathingActive={showBreathing}
           ventActive={showVent}
           groundingActive={showGrounding}

@@ -27,13 +27,16 @@ export default function PrivacyPage() {
           </div>
         </div>
 
-        <p className="legal-updated">Last updated: September 14, 2026</p>
+        <p className="legal-updated">Last updated: September 18, 2026</p>
 
         <p>
           Ping Check is an anonymous self-reflection and wellness-support tool created for the CHMSU community. This policy explains what information the site handles, why it is handled, and the choices available to you.
         </p>
 
         <h2>Information we receive</h2>
+        <p>
+          Before your first check-in, Ping Check asks for a required nickname or alias and an optional ID number. These details are stored locally on the device using browser storage so the check-in can welcome you personally. They are not included in anonymous mood analytics, sent to Supabase, or transmitted to the project team by the check-in flow.
+        </p>
         <p>
           When you select a mood, Ping Check may record the selected mood and an optional referring page for anonymous, aggregate usage insights. The application is designed not to request your name, email address, account, password, precise location, IP address, session identifier, cookie, or user-agent information.
         </p>
@@ -43,7 +46,7 @@ export default function PrivacyPage() {
 
         <h2>How information is used</h2>
         <p>
-          Anonymous mood selections may be used to understand which check-in experiences are useful and to improve the site. We do not use these selections to identify, profile, contact, or make decisions about individual visitors.
+          Anonymous mood selections may be used to understand which check-in experiences are useful and to improve the site. We do not use these selections to identify, profile, contact, or make decisions about individual visitors. The nickname and optional ID are not a monitored help request and do not guarantee follow-up care.
         </p>
         <p>
           If you complete the optional survey, your selected answers and any optional improvement note may be stored without your identity and used only for aggregate service-improvement reporting. Survey results are not combined with your private journal or used to identify individual visitors.
@@ -54,7 +57,7 @@ export default function PrivacyPage() {
 
         <h2>Storage and service providers</h2>
         <p>
-          Anonymous mood and survey data may be stored in Supabase when analytics credentials are enabled. When Supabase is not configured, the application uses a local fallback and does not write those analytics responses to a database. The site is deployed through Vercel, and Vercel or other infrastructure providers may process ordinary technical information in their own logs and according to their own privacy policies.
+          The nickname and optional ID are stored only in the browser on the device where they were entered and can be removed by clearing the site&apos;s local storage or browser data. Anonymous mood and survey data may be stored in Supabase when analytics credentials are enabled. When Supabase is not configured, the application uses a local fallback and does not write those analytics responses to a database. The site is deployed through Vercel, and Vercel or other infrastructure providers may process ordinary technical information in their own logs and according to their own privacy policies.
         </p>
         <p>
           We retain information only for as long as needed for the purposes described above, operational troubleshooting, security, or legal obligations. Retention periods can depend on the configured service providers.

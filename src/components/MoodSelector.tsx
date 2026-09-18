@@ -22,6 +22,7 @@ interface MoodSelectorProps {
   breathingActive: boolean;
   ventActive: boolean;
   groundingActive: boolean;
+  nickname: string;
 }
 
 export const MoodSelector: React.FC<MoodSelectorProps> = ({
@@ -32,10 +33,17 @@ export const MoodSelector: React.FC<MoodSelectorProps> = ({
   breathingActive,
   ventActive,
   groundingActive,
+  nickname,
 }) => {
   return (
     <section id="mood-view" className="view-section active" aria-labelledby="prompt-heading">
       <div className="section-intro">
+        {nickname && (
+          <div className="personal-welcome-banner" role="status">
+            <span className="personal-welcome-kicker">Your calm signal</span>
+            <strong>Welcome {nickname}!</strong>
+          </div>
+        )}
         <h2 id="prompt-heading" className="prompt-text">
           Tap the word that feels closest to what you&apos;re holding:
         </h2>
@@ -111,7 +119,7 @@ export const MoodSelector: React.FC<MoodSelectorProps> = ({
       {/* Privacy Assurance */}
       <div className="privacy-note">
         <Lock className="icon-lock" size={16} aria-hidden="true" />
-        <span>Fully anonymous. No student numbers, names, or accounts are recorded.</span>
+        <span>Your nickname and optional ID stay on this device; mood analytics remain anonymous.</span>
       </div>
     </section>
   );

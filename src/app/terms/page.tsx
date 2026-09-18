@@ -27,7 +27,7 @@ export default function TermsPage() {
           </div>
         </div>
 
-        <p className="legal-updated">Last updated: September 14, 2026</p>
+        <p className="legal-updated">Last updated: September 18, 2026</p>
 
         <p>
           These Terms and Conditions describe the boundaries for using Ping Check, an anonymous self-reflection and wellness-support tool created for the CHMSU community. By entering and using the service, you acknowledge these terms.
@@ -48,12 +48,12 @@ export default function TermsPage() {
 
         <h2>3. Use the service safely</h2>
         <p>
-          Do not enter your name, student number, address, phone number, email address, passwords, account details, or other identifying or highly sensitive information. Do not use Vent Space to submit threats, unlawful content, malware, spam, or content that targets another person.
+          The service requires a nickname or alias before a mood check-in and allows an ID number to be added optionally. Use a nickname you are comfortable storing locally on your device. Do not enter an ID number or other identifying information unless you understand that it will remain in that browser&apos;s local storage. Do not use Vent Space to submit threats, unlawful content, malware, spam, or content that targets another person.
         </p>
 
         <h2>4. Anonymous use and privacy</h2>
         <p>
-          The application is designed not to request accounts or direct identifiers. Information handling, including anonymous mood selections and optional reflections, is described in the <Link href="/privacy">Privacy Policy</Link>. No online service can promise absolute security or uninterrupted availability.
+          The nickname and optional ID are stored locally on your device and are not sent with anonymous mood analytics. They do not create an account, a monitored help request, or a guarantee of follow-up care. Information handling, including anonymous mood selections and optional reflections, is described in the <Link href="/privacy">Privacy Policy</Link>. No online service can promise absolute security or uninterrupted availability.
         </p>
 
         <h2>5. External resources</h2>
