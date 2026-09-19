@@ -14,13 +14,14 @@ const moodEmojis: Record<MoodKey, string> = {
 
 interface EmotionCheckInGateProps {
   onSelectMood: (moodKey: MoodKey, moodLabel: string) => void;
+  onExploreFirst?: () => void;
 }
 
-export const EmotionCheckInGate: React.FC<EmotionCheckInGateProps> = ({ onSelectMood }) => (
-  <EmotionCheckInGateContent onSelectMood={onSelectMood} />
+export const EmotionCheckInGate: React.FC<EmotionCheckInGateProps> = ({ onSelectMood, onExploreFirst }) => (
+  <EmotionCheckInGateContent onSelectMood={onSelectMood} onExploreFirst={onExploreFirst} />
 );
 
-const EmotionCheckInGateContent: React.FC<EmotionCheckInGateProps> = ({ onSelectMood }) => {
+const EmotionCheckInGateContent: React.FC<EmotionCheckInGateProps> = ({ onSelectMood, onExploreFirst }) => {
   useEffect(() => {
     document.body.classList.add('emotion-gate-open');
     return () => document.body.classList.remove('emotion-gate-open');
@@ -46,6 +47,11 @@ const EmotionCheckInGateContent: React.FC<EmotionCheckInGateProps> = ({ onSelect
           </button>
         ))}
       </div>
+      {onExploreFirst && (
+        <button type="button" className="emotion-gate-explore" onClick={onExploreFirst}>
+          Explore Ping Check first
+        </button>
+      )}
       <p className="emotion-gate-note">Your choice stays private on this device unless you choose to use the anonymous community features.</p>
     </div>
     </div>

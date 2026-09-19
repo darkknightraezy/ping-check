@@ -162,7 +162,10 @@ export default function HomePage() {
   return (
     <>
       {showMandatoryEmotionGate && (
-        <EmotionCheckInGate onSelectMood={handleSelectMood} />
+        <EmotionCheckInGate
+          onSelectMood={handleSelectMood}
+          onExploreFirst={() => setShowMandatoryEmotionGate(false)}
+        />
       )}
       {showIdentityGate && (
         <IdentityProfileGate onComplete={handleProfileComplete} />

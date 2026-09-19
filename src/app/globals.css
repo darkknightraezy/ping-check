@@ -3700,3 +3700,7 @@ body.identity-gate-open {
   .lead-card .member-avatar-wrap { width: 112px; height: 112px; }
   .member-name { overflow-wrap: anywhere; }
 }
+
+.emotion-gate-explore { width: 100%; min-height: 44px; margin-top: 12px; padding: 10px 16px; border: 1.5px solid var(--psits-orange-border); border-radius: var(--radius-full); background: rgba(255, 246, 238, 0.72); color: var(--psits-orange-deep); font-size: 0.82rem; font-weight: 700; cursor: pointer; touch-action: manipulation; transition: transform var(--duration-normal) var(--ease-calm), background-color var(--duration-normal) var(--ease-calm), border-color var(--duration-normal) var(--ease-calm), box-shadow var(--duration-normal) var(--ease-calm); }
+.emotion-gate-explore:hover, .emotion-gate-explore:focus-visible { transform: translateY(-2px); border-color: var(--psits-orange); background: rgba(255, 255, 255, 0.86); box-shadow: 0 6px 16px rgba(228, 106, 33, 0.14); }
+.emotion-gate-explore:active { transform: translateY(0); }
