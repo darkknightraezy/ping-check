@@ -3748,3 +3748,9 @@ body.identity-gate-open {
 .app-title-row { align-items: center; gap: clamp(9px, 2vw, 14px); }
 .app-title-logo { width: clamp(44px, 8vw, 62px); height: clamp(44px, 8vw, 62px); align-self: center; transform: translateY(-1px); }
 @media (max-width: 500px) { .app-title-row { gap: 8px; } .app-title-logo { width: 42px; height: 42px; } }
+
+/* Second-pass header logo emphasis */
+.app-title-row { gap: clamp(11px, 2.4vw, 17px); }
+.app-title-logo { width: clamp(58px, 11vw, 82px); height: clamp(58px, 11vw, 82px); transform: translateY(-2px); }
+@media (max-width: 500px) { .app-title-row { gap: 9px; } .app-title-logo { width: 56px; height: 56px; } }
+@media (max-width: 370px) { .app-title-row { gap: 7px; } .app-title-logo { width: 50px; height: 50px; } }
