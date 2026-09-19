@@ -3794,3 +3794,8 @@ body.identity-gate-open {
 @keyframes welcomeLogoPulse { 0%, 100% { scale: 1; filter: drop-shadow(0 8px 14px rgba(21, 115, 62, 0.16)); } 50% { scale: 1.035; filter: drop-shadow(0 10px 18px rgba(228, 106, 33, 0.24)); } }
 @media (max-width: 500px) { .brand-eyebrow { gap: 6px; padding: 0 4px; } .brand-eyebrow::before, .brand-eyebrow::after { width: 4px; height: 4px; } .brand-eyebrow-divider { width: 19px; height: 19px; } }
 @media (prefers-reduced-motion: reduce) { .welcome-logo, .welcome-logo-image { animation: none; } }
+
+/* Clear full-spin treatment for the welcome logo */
+.welcome-logo { animation: welcomeLogoSpin 12s linear infinite, welcomeLogoFloat 5.5s ease-in-out infinite; transform-origin: center; }
+@keyframes welcomeLogoSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .welcome-logo { animation: none; } }
