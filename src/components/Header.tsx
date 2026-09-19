@@ -58,6 +58,7 @@ export const Header: React.FC = () => {
         <div className="calm-signal-wordmark">
           <span className="calm-signal-kicker">Your gentle signal</span>
           <div className="app-title-row">
+            <h1 className="app-title">Ping Check</h1>
             <Image
               src="/assets/ping-check-logo.webp"
               alt=""
@@ -66,7 +67,6 @@ export const Header: React.FC = () => {
               className="app-title-logo"
               priority
             />
-            <h1 className="app-title">Ping Check</h1>
           </div>
         </div>
       </div>
