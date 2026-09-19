@@ -59,8 +59,10 @@ export const Header: React.FC = () => {
           <span className="calm-signal-orbit calm-signal-orbit-one" />
           <span className="calm-signal-orbit calm-signal-orbit-two" />
           <svg viewBox="0 0 48 48" role="presentation">
-            <path d="M24 37.5S9.5 29.4 9.5 18.7A8.2 8.2 0 0 1 24 13.5a8.2 8.2 0 0 1 14.5 5.2C38.5 29.4 24 37.5 24 37.5Z" />
-            <circle cx="24" cy="23" r="3.2" />
+            <path className="signal-wave signal-wave-one" d="M8.5 13.5C12.5 8.9 17.7 6.5 24 6.5s11.5 2.4 15.5 7" />
+            <path className="signal-wave signal-wave-two" d="M12.5 17.8c3-3.2 6.8-4.8 11.5-4.8s8.5 1.6 11.5 4.8" />
+            <path className="signal-heart" d="M24 40S10 31.8 10 22.1a7.7 7.7 0 0 1 14-4.7 7.7 7.7 0 0 1 14 4.7C38 31.8 24 40 24 40Z" />
+            <circle className="signal-dot" cx="24" cy="25" r="3.2" />
           </svg>
         </div>
         <div className="calm-signal-wordmark">

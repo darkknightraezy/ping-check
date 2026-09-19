@@ -3704,3 +3704,19 @@ body.identity-gate-open {
 .emotion-gate-explore { width: 100%; min-height: 44px; margin-top: 12px; padding: 10px 16px; border: 1.5px solid var(--psits-orange-border); border-radius: var(--radius-full); background: rgba(255, 246, 238, 0.72); color: var(--psits-orange-deep); font-size: 0.82rem; font-weight: 700; cursor: pointer; touch-action: manipulation; transition: transform var(--duration-normal) var(--ease-calm), background-color var(--duration-normal) var(--ease-calm), border-color var(--duration-normal) var(--ease-calm), box-shadow var(--duration-normal) var(--ease-calm); }
 .emotion-gate-explore:hover, .emotion-gate-explore:focus-visible { transform: translateY(-2px); border-color: var(--psits-orange); background: rgba(255, 255, 255, 0.86); box-shadow: 0 6px 16px rgba(228, 106, 33, 0.14); }
 .emotion-gate-explore:active { transform: translateY(0); }
+
+/* Ping Check brand lockup refinement */
+.calm-signal-lockup { position: relative; }
+.calm-signal-mark { border: 1.5px solid rgba(21, 115, 62, 0.38); border-radius: 24px 24px 24px 10px; background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(238, 248, 242, 0.82) 52%, rgba(253, 232, 216, 0.9)); box-shadow: 0 10px 24px rgba(21, 115, 62, 0.16), 0 4px 10px rgba(228, 106, 33, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9); }
+.calm-signal-mark::before { content: ''; position: absolute; inset: 6px; border: 1px solid rgba(228, 106, 33, 0.22); border-radius: 18px 18px 18px 7px; pointer-events: none; }
+.calm-signal-mark::after { content: ''; position: absolute; right: -17px; top: 50%; width: 19px; height: 1px; background: linear-gradient(90deg, var(--psits-orange-border), rgba(21, 115, 62, 0.08)); transform: translateY(-50%); pointer-events: none; }
+.calm-signal-mark svg { stroke-width: 2.05; }
+.signal-wave { fill: none; stroke: var(--psits-orange); stroke-width: 1.65; stroke-dasharray: 2 3; opacity: 0.86; }
+.signal-wave-one { animation: signalWave 3.6s ease-in-out 1s infinite; }
+.signal-wave-two { animation: signalWave 3.6s ease-in-out 1.18s infinite reverse; }
+.signal-heart { fill: rgba(255, 255, 255, 0.34); }
+.signal-dot { fill: var(--psits-orange); stroke: var(--psits-orange); animation: calmSignalGlow 3.8s ease-in-out 1.2s infinite; }
+.calm-signal-wordmark { position: relative; padding-bottom: 10px; }
+.calm-signal-wordmark::before { content: ''; position: absolute; left: -1px; bottom: 2px; width: 100%; height: 1px; background: linear-gradient(90deg, var(--chmsu-green-border), var(--psits-orange-border), transparent); opacity: 0.8; }
+@keyframes signalWave { 0%, 100% { stroke-dashoffset: 0; opacity: 0.55; } 50% { stroke-dashoffset: 8; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .signal-wave, .signal-dot, .calm-signal-mark::before, .calm-signal-mark::after { animation: none; } }
