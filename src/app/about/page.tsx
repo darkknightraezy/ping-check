@@ -36,7 +36,7 @@ const committees: Committee[] = [
     members: [
       {
         name: 'Sherelyn Bello',
-        image: '/assets/sherelyn-bello.jpg',
+        image: '/assets/sherelyn-bello.webp',
         subrole: 'Activity In-Charge',
       },
     ],
@@ -49,9 +49,9 @@ const committees: Committee[] = [
     roleDescription:
       'Builds, hosts, and maintains the interactive web system and QR functionality and establishes the visual identity for both the physical posters and the digital interface.',
     members: [
-      { name: 'Hohnsalm Natividad', image: '/assets/hohnsalm-natividad.jpg' },
-      { name: 'Ian Billones', image: '/assets/ian-billones.jpg' },
-      { name: 'Zanzhumei Lopez', image: '/assets/zanzhumei-lopez.jpg' },
+      { name: 'Hohnsalm Natividad', image: '/assets/hohnsalm-natividad.webp' },
+      { name: 'Ian Billones', image: '/assets/ian-billones.webp' },
+      { name: 'Zanzhumei Lopez', image: '/assets/zanzhumei-lopez.webp' },
     ],
   },
   {
@@ -62,12 +62,12 @@ const committees: Committee[] = [
     roleDescription:
       'Manages the text content in the web system to ensure safe, empathetic, and effective messaging.',
     members: [
-      { name: 'Angela Javelosa', image: '/assets/angela-javelosa.jpg' },
-      { name: 'Joy Almonicar', image: '/assets/joy-almonicar.jpg' },
-      { name: 'Princess Jamaica Jimenez', image: '/assets/princess-jamaica-jimenez.jpg' },
-      { name: 'Princess Mae Isuga', image: '/assets/princess-mae-isuga.jpg' },
-      { name: 'Marissa Bautista', image: '/assets/marissa-bautista.jpg' },
-      { name: 'Clyde Emmanuel Lachica Arian', image: '/assets/clyde-emmanuel-lachica-arian.jpg' },
+      { name: 'Angela Javelosa', image: '/assets/angela-javelosa.webp' },
+      { name: 'Joy Almonicar', image: '/assets/joy-almonicar.webp' },
+      { name: 'Princess Jamaica Jimenez', image: '/assets/princess-jamaica-jimenez.webp' },
+      { name: 'Princess Mae Isuga', image: '/assets/princess-mae-isuga.webp' },
+      { name: 'Marissa Bautista', image: '/assets/marissa-bautista.webp' },
+      { name: 'Clyde Emmanuel Lachica Arian', image: '/assets/clyde-emmanuel-lachica-arian.webp' },
     ],
   },
   {
@@ -76,8 +76,8 @@ const committees: Committee[] = [
     roleDescription:
       'Managing post schedules, writing empathetic captions, and publishing content across all official social platforms.',
     members: [
-      { name: 'Mira Fe Pelinghe', image: '/assets/mira-fe-pelinghe.jpg' },
-      { name: 'Christopher Caratao', image: '/assets/christopher-caratao.jpg' },
+      { name: 'Mira Fe Pelinghe', image: '/assets/mira-fe-pelinghe.webp' },
+      { name: 'Christopher Caratao', image: '/assets/christopher-caratao.webp' },
     ],
   },
   {
@@ -86,9 +86,9 @@ const committees: Committee[] = [
     roleDescription:
       'Managing digital assets, account access, publishing workflows, and distribution channels so online content releases smoothly without technical or scheduling bottlenecks.',
     members: [
-      { name: 'John Michael Polinar', image: '/assets/john-michael-polinar.jpg' },
-      { name: 'Xervy Dusaran', image: '/assets/xervy-dusaran.jpg' },
-      { name: 'Paul Robles', image: '/assets/paul-robles.jpg' },
+      { name: 'John Michael Polinar', image: '/assets/john-michael-polinar.webp' },
+      { name: 'Xervy Dusaran', image: '/assets/xervy-dusaran.webp' },
+      { name: 'Paul Robles', image: '/assets/paul-robles.webp' },
     ],
   },
 ];
