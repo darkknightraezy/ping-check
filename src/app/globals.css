@@ -3670,3 +3670,33 @@ body.identity-gate-open {
     margin-top: var(--space-3);
   }
 }
+
+/* About page visual refinement */
+.about-nav { position: relative; }
+.about-card { border-color: rgba(255, 255, 255, 0.82); background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(238, 248, 242, 0.78)); box-shadow: 0 18px 42px rgba(13, 78, 39, 0.1), 0 4px 14px rgba(228, 106, 33, 0.05); }
+.about-card::before { content: ''; position: absolute; inset: 0 0 auto; height: 4px; background: linear-gradient(90deg, var(--chmsu-green), var(--psits-orange), #84529E); opacity: 0.82; }
+.story-card { background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(238, 248, 242, 0.84) 58%, rgba(255, 246, 238, 0.76)); }
+.committees-card { gap: var(--space-5); }
+.card-accent-tag { box-shadow: 0 3px 10px rgba(21, 115, 62, 0.08); }
+.committee-item { border-color: rgba(255, 255, 255, 0.85); background: linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(238, 248, 242, 0.55)); box-shadow: 0 10px 26px rgba(13, 78, 39, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.committee-item.highlight-lead { background: linear-gradient(145deg, rgba(255, 253, 249, 0.92), rgba(255, 246, 238, 0.72)); }
+.committee-item.tech-committee { background: linear-gradient(145deg, rgba(255, 255, 255, 0.84), rgba(238, 248, 242, 0.66)); }
+.committee-item.psych-committee { background: linear-gradient(145deg, rgba(255, 255, 255, 0.84), rgba(248, 240, 251, 0.66)); }
+.committee-item:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(13, 78, 39, 0.12), 0 5px 14px rgba(228, 106, 33, 0.06); }
+.committee-name { font-family: var(--font-serif); font-size: clamp(1.12rem, 3vw, 1.32rem); }
+.member-profile-card { gap: clamp(16px, 3vw, 22px); padding: 16px 18px; border-color: rgba(255, 255, 255, 0.9); background: rgba(255, 255, 255, 0.64); box-shadow: 0 7px 18px rgba(13, 78, 39, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.82); }
+.member-profile-card:hover { border-color: var(--chmsu-green-border); background: rgba(255, 255, 255, 0.82); }
+.member-avatar-wrap { width: clamp(92px, 18vw, 124px); height: clamp(92px, 18vw, 124px); border-width: 4px; box-shadow: 0 7px 18px rgba(13, 78, 39, 0.12), 0 0 0 1.5px var(--color-border-medium); }
+.lead-card .member-avatar-wrap { width: clamp(112px, 23vw, 142px); height: clamp(112px, 23vw, 142px); }
+.member-name { font-size: clamp(1rem, 2.6vw, 1.08rem); }
+.member-name.lead-name { font-size: clamp(1.2rem, 3.4vw, 1.4rem); }
+.member-photo { object-position: center 16%; }
+.about-cta-section { padding: var(--space-6) 0 var(--space-8); }
+
+@media (max-width: 479px) {
+  .about-card { padding: 28px 17px 22px; border-radius: var(--radius-md); }
+  .member-profile-card { align-items: flex-start; padding: 14px 12px; }
+  .member-avatar-wrap { width: 96px; height: 96px; }
+  .lead-card .member-avatar-wrap { width: 112px; height: 112px; }
+  .member-name { overflow-wrap: anywhere; }
+}
