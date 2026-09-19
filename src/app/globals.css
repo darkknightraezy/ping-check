@@ -3773,3 +3773,24 @@ body.identity-gate-open {
 .partnership-link { font-family: var(--font-serif); font-style: normal; color: #6C3586; border-bottom: 1px solid rgba(108, 53, 134, 0.35); }
 .partnership-link strong { letter-spacing: 0.01em; }
 @media (max-width: 500px) { .brand-affiliation { padding: 6px 10px; } .brand-eyebrow { gap: 5px; font-size: 0.62rem; letter-spacing: 0.02em; } .partnership-tagline { gap: 4px; font-size: 0.78rem; } }
+
+/* Affiliation signal-line treatment */
+.brand-affiliation { position: relative; padding: 10px 4px; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.brand-affiliation::before,
+.brand-affiliation::after { content: ''; position: absolute; left: 50%; width: min(100%, 360px); height: 1px; transform: translateX(-50%); background: linear-gradient(90deg, transparent, var(--chmsu-green-border) 22%, var(--psits-orange-border) 50%, rgba(108, 53, 134, 0.35) 78%, transparent); }
+.brand-affiliation::before { top: 0; }
+.brand-affiliation::after { bottom: 0; opacity: 0.7; }
+.brand-eyebrow { position: relative; z-index: 1; gap: 10px; padding: 0 14px; }
+.brand-eyebrow::before,
+.brand-eyebrow::after { content: ''; width: 5px; height: 5px; flex: 0 0 auto; border-radius: 50%; background: var(--psits-orange); box-shadow: 0 0 0 3px rgba(228, 106, 33, 0.12); }
+.brand-eyebrow::after { background: #84529E; box-shadow: 0 0 0 3px rgba(132, 82, 158, 0.12); }
+.brand-eyebrow-divider { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border: 1px solid var(--psits-orange-border); border-radius: 50%; background: rgba(255, 246, 238, 0.76); }
+
+/* Welcome logo motion: gentle rotation, breathing scale, and floating depth */
+.welcome-logo { animation: welcomeLogoRotate 18s linear infinite, welcomeLogoFloat 5.5s ease-in-out infinite; transform-origin: center; }
+.welcome-logo-image { animation: welcomeLogoPulse 3.8s ease-in-out infinite; }
+@keyframes welcomeLogoRotate { from { rotate: 0deg; } to { rotate: 360deg; } }
+@keyframes welcomeLogoFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+@keyframes welcomeLogoPulse { 0%, 100% { scale: 1; filter: drop-shadow(0 8px 14px rgba(21, 115, 62, 0.16)); } 50% { scale: 1.035; filter: drop-shadow(0 10px 18px rgba(228, 106, 33, 0.24)); } }
+@media (max-width: 500px) { .brand-eyebrow { gap: 6px; padding: 0 4px; } .brand-eyebrow::before, .brand-eyebrow::after { width: 4px; height: 4px; } .brand-eyebrow-divider { width: 19px; height: 19px; } }
+@media (prefers-reduced-motion: reduce) { .welcome-logo, .welcome-logo-image { animation: none; } }
