@@ -3743,3 +3743,8 @@ body.identity-gate-open {
 @keyframes uploadedLogoFloat { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-3px) scale(1.02); } }
 @media (prefers-reduced-motion: reduce) { .app-title-logo, .welcome-logo-image { animation: none; } }
 @media (max-width: 500px) { .app-title-row { gap: 7px; } .app-title-logo { width: 35px; height: 35px; } }
+
+/* Header logo scale: intentionally slightly larger than the wordmark */
+.app-title-row { align-items: center; gap: clamp(9px, 2vw, 14px); }
+.app-title-logo { width: clamp(44px, 8vw, 62px); height: clamp(44px, 8vw, 62px); align-self: center; transform: translateY(-1px); }
+@media (max-width: 500px) { .app-title-row { gap: 8px; } .app-title-logo { width: 42px; height: 42px; } }
