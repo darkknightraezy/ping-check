@@ -3799,3 +3799,9 @@ body.identity-gate-open {
 .welcome-logo { animation: welcomeLogoSpin 12s linear infinite, welcomeLogoFloat 5.5s ease-in-out infinite; transform-origin: center; }
 @keyframes welcomeLogoSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .welcome-logo { animation: none; } }
+
+/* Horizontal-axis logo spin: turns edge-on and back like a physical emblem */
+.welcome-logo { perspective: 900px; }
+.welcome-logo-image { transform-style: preserve-3d; animation: welcomeLogoHorizontalSpin 6s linear infinite, welcomeLogoPulse 3.8s ease-in-out infinite; }
+@keyframes welcomeLogoHorizontalSpin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+@media (prefers-reduced-motion: reduce) { .welcome-logo-image { animation: none; } }

@@ -106,10 +106,10 @@ export const QuoteDisplay: React.FC<QuoteDisplayProps> = ({
             className="btn-secondary quote-home-button"
             type="button"
             onClick={onBack}
-            aria-label="Return to Ping Check home"
+            aria-label="Explore Ping Check"
           >
             <Home size={16} aria-hidden="true" />
-            <span>Back to Home</span>
+            <span>Explore Ping Check</span>
           </button>
         </div>
       </div>
