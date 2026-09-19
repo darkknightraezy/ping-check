@@ -3805,3 +3805,7 @@ body.identity-gate-open {
 .welcome-logo-image { transform-style: preserve-3d; animation: welcomeLogoHorizontalSpin 6s linear infinite, welcomeLogoPulse 3.8s ease-in-out infinite; }
 @keyframes welcomeLogoHorizontalSpin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
 @media (prefers-reduced-motion: reduce) { .welcome-logo-image { animation: none; } }
+
+/* Static welcome logo: keep the artwork still and clear */
+.welcome-logo,
+.welcome-logo-image { animation: none !important; transform: none !important; }
