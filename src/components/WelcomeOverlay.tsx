@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Heart, ShieldCheck } from 'lucide-react';
 
 export const WelcomeOverlay: React.FC = () => {
@@ -47,8 +48,15 @@ export const WelcomeOverlay: React.FC = () => {
   return (
     <div className={`welcome-overlay ${isClosing ? 'is-closing' : ''}`} role="dialog" aria-modal="true" aria-labelledby="welcome-title">
       <div className="welcome-window">
-        <div className="welcome-window-icon" aria-hidden="true">
-          <Heart size={25} />
+        <div className="welcome-logo" aria-hidden="true">
+          <Image
+            src="/assets/ping-check-logo.webp"
+            alt=""
+            width={112}
+            height={112}
+            className="welcome-logo-image"
+            priority
+          />
         </div>
         <span className="welcome-kicker">A quiet moment for you</span>
         <h2 id="welcome-title">Welcome to Ping Check</h2>

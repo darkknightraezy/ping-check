@@ -57,7 +57,17 @@ export const Header: React.FC = () => {
       <div className="calm-signal-lockup">
         <div className="calm-signal-wordmark">
           <span className="calm-signal-kicker">Your gentle signal</span>
-          <h1 className="app-title">Ping Check</h1>
+          <div className="app-title-row">
+            <Image
+              src="/assets/ping-check-logo.webp"
+              alt=""
+              width={48}
+              height={48}
+              className="app-title-logo"
+              priority
+            />
+            <h1 className="app-title">Ping Check</h1>
+          </div>
         </div>
       </div>
       <div className="connection-prompt-float" role="note" aria-label="Self-connection check-in prompt">
