@@ -3761,3 +3761,15 @@ body.identity-gate-open {
 .app-title-logo { flex: 0 0 auto; transform: translateY(-5px); }
 @media (max-width: 500px) { .app-title-logo { transform: translateY(-3px); } }
 @media (max-width: 370px) { .app-title-logo { transform: translateY(-2px); } }
+
+/* Partnership identity refinement */
+.brand-affiliation { padding: 7px 17px; background: linear-gradient(100deg, rgba(238, 248, 242, 0.84), rgba(248, 240, 251, 0.66)); border-color: rgba(132, 82, 158, 0.24); box-shadow: 0 5px 16px rgba(13, 78, 39, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.78); }
+.brand-eyebrow { display: inline-flex; align-items: center; justify-content: center; gap: 7px; font-family: var(--font-serif); font-size: clamp(0.68rem, 1.8vw, 0.8rem); font-weight: 700; letter-spacing: 0.035em; text-transform: none; line-height: 1.2; }
+.brand-eyebrow-psits { color: var(--chmsu-green-deep); }
+.brand-eyebrow-divider { color: var(--psits-orange-deep); font-family: var(--font-mono); font-size: 0.9em; opacity: 0.85; }
+.brand-eyebrow-psych { color: #6C3586; }
+.partnership-tagline { align-items: baseline; gap: 6px; margin-top: 6px; font-family: var(--font-serif); font-size: clamp(0.9rem, 2.2vw, 1rem); font-style: italic; letter-spacing: 0.01em; color: #5B4B60; }
+.partnership-intro { opacity: 0.86; }
+.partnership-link { font-family: var(--font-serif); font-style: normal; color: #6C3586; border-bottom: 1px solid rgba(108, 53, 134, 0.35); }
+.partnership-link strong { letter-spacing: 0.01em; }
+@media (max-width: 500px) { .brand-affiliation { padding: 6px 10px; } .brand-eyebrow { gap: 5px; font-size: 0.62rem; letter-spacing: 0.02em; } .partnership-tagline { gap: 4px; font-size: 0.78rem; } }

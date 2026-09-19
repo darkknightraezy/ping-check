@@ -51,7 +51,11 @@ export const Header: React.FC = () => {
 
       <div className="brand-affiliation">
         <span className="pulse-indicator" aria-hidden="true" />
-        <span className="brand-eyebrow">CHMSU PSITS × CHMSU Psychological Society</span>
+        <span className="brand-eyebrow">
+          <span className="brand-eyebrow-psits">CHMSU PSITS</span>
+          <span className="brand-eyebrow-divider" aria-hidden="true">×</span>
+          <span className="brand-eyebrow-psych">CHMSU Psychological Society</span>
+        </span>
       </div>
 
       <div className="calm-signal-lockup">
@@ -69,7 +73,7 @@ export const Header: React.FC = () => {
         <p className="connection-prompt-instruction">Choose the word that feels closest to what you&apos;re holding.</p>
       </div>
       <p className="partnership-tagline">
-        An initiative in partnership with{' '}
+        <span className="partnership-intro">An initiative in partnership with</span>
         <a
           href="https://www.facebook.com/CHMSCPsychologicalSociety"
           target="_blank"
