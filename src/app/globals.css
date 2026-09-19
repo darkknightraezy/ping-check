@@ -3725,3 +3725,10 @@ body.identity-gate-open {
 .calm-signal-lockup { gap: 0; }
 .calm-signal-wordmark { padding: 4px 0 9px; }
 .calm-signal-wordmark::before { left: 0; width: 100%; }
+
+/* Centered wordmark alignment */
+.calm-signal-lockup { justify-content: center; text-align: center; }
+.calm-signal-wordmark { align-items: center; text-align: center; }
+.calm-signal-kicker { text-align: center; }
+.app-title { text-align: center; }
+.app-title::after { margin-left: auto; margin-right: auto; }
