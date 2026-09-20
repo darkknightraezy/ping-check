@@ -113,6 +113,9 @@ export default function AboutPage() {
         <p className="about-paragraph">
           In computer networking, a <em>&ldquo;ping&rdquo;</em> tests whether a connection exists and how quickly a signal returns. On university campuses, students often spend so much time keeping up with academics, projects, and deadlines that they forget to check their own internal connection.
         </p>
+        <p className="about-paragraph suicide-prevention-context">
+          <strong>In recognition of Suicide Prevention Month this September,</strong> Ping Check was created as a gentle reminder that checking in, reaching out, and asking for support can be meaningful steps toward care and connection.
+        </p>
         <p className="about-paragraph">
           <strong>Ping Check</strong> is a collaborative wellness initiative organized by the{' '}
           <strong>Philippine Society of Information Technology Students (PSITS)</strong> in partnership with the{' '}
