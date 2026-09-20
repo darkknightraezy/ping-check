@@ -3815,3 +3815,13 @@ body.identity-gate-open {
 .guidance-tips { margin: 2px 0 0; padding-left: 1.25rem; display: grid; gap: 8px; color: var(--color-text-primary); font-size: 0.98rem; line-height: 1.5; }
 .guidance-tips li::marker { color: var(--psits-orange-deep); }
 @media (max-width: 500px) { .guidance-tips { font-size: 0.92rem; gap: 7px; } }
+
+/* Compact mood spectrum layout */
+.mood-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(8px, 1.8vw, 12px); }
+.btn-mood { min-height: 76px; padding: 11px 12px; gap: 3px; border-radius: 13px; }
+.btn-mood .mood-emoji { font-size: 1.12rem; }
+.btn-mood .mood-name { font-size: clamp(0.96rem, 2.4vw, 1.16rem); line-height: 1.08; }
+.btn-mood .mood-desc { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-size: clamp(0.64rem, 1.55vw, 0.75rem); line-height: 1.22; }
+@media (min-width: 768px) { .mood-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; } .btn-mood { min-height: 82px; padding: 12px 13px; } }
+@media (max-width: 480px) { .mood-grid { gap: 8px; } .btn-mood { min-height: 72px; padding: 10px 9px; } .btn-mood .mood-emoji { font-size: 1.04rem; } .btn-mood .mood-name { font-size: clamp(0.86rem, 4vw, 1rem); } .btn-mood .mood-desc { font-size: clamp(0.59rem, 2.2vw, 0.68rem); } }
+@media (max-width: 380px) { .mood-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; } .btn-mood { min-height: 68px; padding: 9px 8px; } .btn-mood .mood-name { font-size: 0.84rem; } .btn-mood .mood-desc { font-size: 0.58rem; } }
