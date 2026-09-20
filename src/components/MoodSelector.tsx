@@ -7,11 +7,18 @@ import { MoodKey, MoodOption, SUPPORTED_MOODS } from '@/lib/types';
 
 const moodEmojis: Record<MoodKey, string> = {
   sad: '😔',
+  happy: '😊',
   tired: '😴',
+  content: '🌿',
   disconnected: '🌫️',
+  calm: '🍃',
   heavy: '🪨',
+  grateful: '🙏',
   broken: '💔',
+  excited: '✨',
   loss: '🕊️',
+  hopeful: '🌱',
+  'just-okay': '😐',
 };
 
 interface MoodSelectorProps {
@@ -45,7 +52,7 @@ export const MoodSelector: React.FC<MoodSelectorProps> = ({
           </div>
         )}
         <h2 id="prompt-heading" className="prompt-text">
-          Tap the word that feels closest to what you&apos;re holding:
+          Choose the word that feels closest to what you&apos;re feeling.
         </h2>
       </div>
 

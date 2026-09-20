@@ -14,7 +14,7 @@ interface AdminAnalytics {
 }
 
 const moodLabels: Record<string, string> = {
-  sad: 'Sad', tired: 'Tired', disconnected: 'Disconnected', heavy: 'Heavy', broken: 'Broken', loss: 'Loss',
+  sad: 'Sad', happy: 'Happy', tired: 'Tired', content: 'Content', disconnected: 'Disconnected', calm: 'Calm', heavy: 'Heavy', grateful: 'Grateful', broken: 'Broken', excited: 'Excited', loss: 'Loss', hopeful: 'Hopeful', 'just-okay': 'Just okay',
 };
 
 export default function AdminPage() {

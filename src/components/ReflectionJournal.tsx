@@ -9,11 +9,18 @@ const MAX_REFLECTIONS = 12;
 
 const reflectionPrompts: Record<MoodKey, string> = {
   sad: 'What feels hardest to carry today, and what would make this moment a little gentler?',
+  happy: 'What is making your heart feel lighter today, and how would you like to share or remember it?',
   tired: 'What is one thing you can release, postpone, or ask for help with today?',
+  content: 'What is helping you feel settled today, and how can you protect a little more of that ease?',
   disconnected: 'What usually helps you feel a little more present, safe, or like yourself?',
+  calm: 'What feels steady in you right now, and where could you carry that steadiness next?',
   heavy: 'If you could set down one part of this weight for now, what would it be?',
+  grateful: 'What or who are you thankful for today, and what do you want to remember about it?',
   broken: 'What part of you needs the most patience and care in this moment?',
+  excited: 'What are you looking forward to, and what is one grounded first step you could take?',
   loss: 'What would you like to remember, honor, or gently say to what you are grieving?',
+  hopeful: 'What possibility are you holding onto, and what small step could move you toward it?',
+  'just-okay': 'What would make today feel a little easier, kinder, or more manageable?',
 };
 
 interface ReflectionEntry {
@@ -161,4 +168,3 @@ export const ReflectionJournal: React.FC<ReflectionJournalProps> = ({ moodKey, m
 };
 
 export default ReflectionJournal;
-

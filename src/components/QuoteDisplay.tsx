@@ -15,11 +15,18 @@ interface QuoteDisplayProps {
 
 const moodEmojis: Record<MoodKey, string> = {
   sad: '😔',
+  happy: '😊',
   tired: '😴',
+  content: '🌿',
   disconnected: '🌫️',
+  calm: '🍃',
   heavy: '🪨',
+  grateful: '🙏',
   broken: '💔',
+  excited: '✨',
   loss: '🕊️',
+  hopeful: '🌱',
+  'just-okay': '😐',
 };
 
 export const QuoteDisplay: React.FC<QuoteDisplayProps> = ({
@@ -55,11 +62,17 @@ export const QuoteDisplay: React.FC<QuoteDisplayProps> = ({
           )}
         </blockquote>
 
-        <div className="reflection-box">
-          <div className="reflection-label">A gentle reminder</div>
-          <p id="reflection-text" className="reflection-text">
-            {quoteData.reflection}
-          </p>
+        <div className={`reflection-box ${quoteData.guidanceTips ? 'day-guidance-box' : ''}`}>
+          <div className="reflection-label">{quoteData.guidanceTips ? 'Carry it through the day' : 'A gentle reminder'}</div>
+          {quoteData.guidanceTips ? (
+            <ul className="guidance-tips" aria-label="Tips for carrying this feeling through the day">
+              {quoteData.guidanceTips.map((tip) => <li key={tip}>{tip}</li>)}
+            </ul>
+          ) : (
+            <p id="reflection-text" className="reflection-text">
+              {quoteData.reflection}
+            </p>
+          )}
         </div>
 
         {quoteData.groundingExercise && (

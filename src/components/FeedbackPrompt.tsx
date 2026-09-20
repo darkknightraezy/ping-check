@@ -103,7 +103,7 @@ export const FeedbackPrompt: React.FC = () => {
             <div className="feedback-icon" aria-hidden="true">
               <Radio size={22} />
             </div>
-            <span className="feedback-kicker">Quick signal check</span>
+            <span className="feedback-kicker">Share your thoughts</span>
             <h2 id="feedback-title">How&apos;s the signal?</h2>
             <p id="feedback-description">
               Rate your connection with yourself right now—from a little static to full bars.

@@ -6,11 +6,18 @@ import { MoodKey } from '@/lib/types';
 
 const moodLabels: Record<MoodKey, string> = {
   sad: 'Sad',
+  happy: 'Happy',
   tired: 'Tired',
+  content: 'Content',
   disconnected: 'Disconnected',
+  calm: 'Calm',
   heavy: 'Heavy',
+  grateful: 'Grateful',
   broken: 'Broken',
+  excited: 'Excited',
   loss: 'Loss',
+  hopeful: 'Hopeful',
+  'just-okay': 'Just okay',
 };
 
 interface InsightsData {
@@ -81,4 +88,3 @@ export const CommunityInsights: React.FC = () => {
 };
 
 export default CommunityInsights;
-

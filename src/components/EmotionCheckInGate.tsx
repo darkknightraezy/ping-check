@@ -5,11 +5,18 @@ import { MoodKey, MoodOption, SUPPORTED_MOODS } from '@/lib/types';
 
 const moodEmojis: Record<MoodKey, string> = {
   sad: '😔',
+  happy: '😊',
   tired: '😴',
+  content: '🌿',
   disconnected: '🌫️',
+  calm: '🍃',
   heavy: '🪨',
+  grateful: '🙏',
   broken: '💔',
+  excited: '✨',
   loss: '🕊️',
+  hopeful: '🌱',
+  'just-okay': '😐',
 };
 
 interface EmotionCheckInGateProps {

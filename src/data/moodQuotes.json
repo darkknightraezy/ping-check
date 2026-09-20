@@ -34,5 +34,68 @@
     "author": "Anne Roiphe, Comfort: A Journey Through Grief",
     "reflection": "You are allowed to mourn what is gone while taking all the time you need to rebuild yourself.",
     "groundingExercise": "Rest your hands palms-up on your lap. Breathe in peace, breathe out tension. Allow yourself to honor what was, without having to explain it to anyone."
+  },
+  "happy": {
+    "quote": "Love that for you. Let it spill over.",
+    "reflection": "A good moment is worth receiving fully. Let your happiness be information about what helps you feel alive, connected, and like yourself.",
+    "guidanceTips": [
+      "Tell one person something you appreciate about them.",
+      "Note what made today good so you can find it again.",
+      "Use the energy on something you’ve been putting off."
+    ]
+  },
+  "content": {
+    "quote": "Contentment is worth noticing, not just passing through.",
+    "reflection": "Ease does not need to be earned again every minute. Let this settled feeling be a quiet reminder that you can make room for enough.",
+    "guidanceTips": [
+      "Take one slow minute to soak it in.",
+      "Protect the habits that got you here: sleep, meals, and people.",
+      "Keep your pace and don’t rush to fill the calm."
+    ]
+  },
+  "calm": {
+    "quote": "Keep this steady feeling with you.",
+    "reflection": "Your steadiness is a resource. Notice how clear and grounded you feel, and let that become a reference point you can return to.",
+    "guidanceTips": [
+      "Do your hardest task while your mind is clear.",
+      "Take three slow breaths before class, meetings, or messages.",
+      "Save this feeling as your reference point for tougher days."
+    ]
+  },
+  "grateful": {
+    "quote": "Gratitude grows when it’s shared.",
+    "reflection": "Let your appreciation widen your attention. Small things can be meaningful anchors when you take time to notice them.",
+    "guidanceTips": [
+      "Send a thank-you message to someone today.",
+      "Write down three small good things.",
+      "Notice one thing you usually overlook."
+    ]
+  },
+  "excited": {
+    "quote": "Great energy, so aim it somewhere.",
+    "reflection": "Excitement can be a generous kind of momentum. Give it one clear direction so it supports you instead of scattering you.",
+    "guidanceTips": [
+      "Pick one thing to start on now.",
+      "Share the plan with someone who’ll cheer you on.",
+      "Pace yourself so the excitement lasts the whole day."
+    ]
+  },
+  "hopeful": {
+    "quote": "Hold onto that. It’s real.",
+    "reflection": "Hope does not have to solve everything today. Let it be a small, honest opening toward what could come next.",
+    "guidanceTips": [
+      "Write down one small step toward what you’re hoping for.",
+      "Remember one time things did get better.",
+      "Share the hope with someone who needs it."
+    ]
+  },
+  "just-okay": {
+    "quote": "Steady is fine. You don’t need to feel anything more.",
+    "reflection": "There is room for ordinary days. You can meet this moment as it is without forcing it to become brighter, heavier, or different.",
+    "guidanceTips": [
+      "Check in with your body: water, food, and rest.",
+      "Do one small thing that usually feels good.",
+      "Come back and ping again later if the day shifts."
+    ]
   }
 }
