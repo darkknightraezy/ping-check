@@ -17,6 +17,7 @@ import { SurveyForm } from '@/components/SurveyForm';
 import { SurveyInsights } from '@/components/SurveyInsights';
 import { EmotionCheckInGate } from '@/components/EmotionCheckInGate';
 import { CheckInProfile, IdentityProfileGate } from '@/components/IdentityProfileGate';
+import { SuicidePreventionBanner, SuicidePreventionResources } from '@/components/SuicidePreventionBanner';
 
 const defaultQuotes = moodQuotesData as MoodQuotesRegistry;
 const MOOD_HISTORY_STORAGE_KEY = 'ping-check-local-history-v1';
@@ -170,6 +171,7 @@ export default function HomePage() {
       {showIdentityGate && (
         <IdentityProfileGate onComplete={handleProfileComplete} />
       )}
+      {!selectedMood && <SuicidePreventionBanner />}
       {/* View 1: Mood Selector (if no mood selected) */}
       {!selectedMood || !quoteData ? (
         <MoodSelector
@@ -217,6 +219,7 @@ export default function HomePage() {
       {!selectedMood && <SurveyInsights />}
 
       {/* Campus & Crisis Support Drawer */}
+      {!selectedMood && <SuicidePreventionResources />}
       <SupportDrawer />
 
       {/* Toast Notification */}

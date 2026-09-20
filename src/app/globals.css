@@ -3829,3 +3829,30 @@ body.identity-gate-open {
 /* Suicide Prevention Month context */
 .suicide-prevention-context { margin: 2px 0; padding: 12px 14px; border-left: 3px solid var(--psits-orange); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; background: linear-gradient(100deg, rgba(255, 246, 238, 0.82), rgba(238, 248, 242, 0.58)); color: var(--color-text-primary); }
 .suicide-prevention-context strong { color: var(--psits-orange-deep); }
+
+/* Suicide Prevention Month homepage banner and resource panel */
+.suicide-prevention-banner { width: 100%; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 13px; margin: 0 auto var(--space-4); padding: 13px 15px; border: 1px solid rgba(132, 82, 158, 0.34); border-radius: var(--radius-md); background: linear-gradient(105deg, rgba(238, 248, 242, 0.88), rgba(255, 246, 238, 0.86), rgba(247, 240, 250, 0.8)); box-shadow: 0 10px 28px rgba(13, 78, 39, 0.08); }
+.suicide-prevention-banner-icon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; color: #84529E; background: rgba(132, 82, 158, 0.12); border: 1px solid rgba(132, 82, 158, 0.28); }
+.suicide-prevention-banner-copy { min-width: 0; }
+.suicide-prevention-banner-kicker { display: block; color: #704381; font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.suicide-prevention-banner h2 { margin-top: 2px; color: var(--chmsu-green-deep); font-family: var(--font-serif); font-size: clamp(1rem, 2.8vw, 1.22rem); line-height: 1.2; }
+.suicide-prevention-banner p { margin-top: 3px; color: var(--color-text-secondary); font-size: 0.76rem; line-height: 1.4; }
+.suicide-prevention-banner-action, .prevention-resource-link { display: inline-flex; align-items: center; justify-content: center; gap: 6px; color: var(--chmsu-green-deep); font-size: 0.72rem; font-weight: 700; text-decoration: none; }
+.suicide-prevention-banner-action { white-space: nowrap; padding: 9px 11px; border: 1px solid var(--chmsu-green-border); border-radius: var(--radius-full); background: rgba(255,255,255,0.58); }
+.suicide-prevention-banner-action:hover, .prevention-resource-link:hover { color: var(--psits-orange-deep); }
+.suicide-prevention-resources { width: 100%; margin: var(--space-5) auto 0; padding: 17px; border: 1px solid rgba(132, 82, 158, 0.28); border-radius: var(--radius-md); background: linear-gradient(145deg, rgba(247, 240, 250, 0.7), rgba(255, 246, 238, 0.72)); }
+.suicide-prevention-resources-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; color: #84529E; }
+.suicide-prevention-resources-heading h3 { margin-top: 3px; color: var(--chmsu-green-deep); font-family: var(--font-serif); font-size: 1.08rem; }
+.suicide-prevention-resources-note { margin-top: 8px; color: var(--color-text-secondary); font-size: 0.78rem; line-height: 1.5; }
+.suicide-prevention-resources-note strong { color: var(--psits-orange-deep); }
+.suicide-prevention-hotlines { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 13px; }
+.prevention-hotline { min-width: 0; display: flex; align-items: flex-start; gap: 7px; padding: 10px; border: 1px solid var(--chmsu-green-border); border-radius: var(--radius-sm); background: rgba(255,255,255,0.68); color: var(--chmsu-green-deep); text-decoration: none; }
+.prevention-hotline:hover { border-color: var(--chmsu-green); transform: translateY(-1px); }
+.prevention-hotline.primary { border-color: var(--psits-orange-border); background: rgba(255, 246, 238, 0.85); }
+.prevention-hotline svg { flex: 0 0 auto; margin-top: 2px; color: var(--psits-orange-deep); }
+.prevention-hotline span { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.prevention-hotline strong { font-size: 0.72rem; }
+.prevention-hotline small { color: var(--color-text-secondary); font-size: 0.68rem; line-height: 1.25; overflow-wrap: anywhere; }
+.prevention-resource-link { margin-top: 13px; color: #704381; }
+@media (max-width: 700px) { .suicide-prevention-banner { grid-template-columns: auto 1fr; } .suicide-prevention-banner-action { grid-column: 1 / -1; justify-self: stretch; } .suicide-prevention-hotlines { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 420px) { .suicide-prevention-banner { gap: 9px; padding: 12px; } .suicide-prevention-banner-icon { width: 34px; height: 34px; } .suicide-prevention-banner p { font-size: 0.7rem; } .suicide-prevention-resources { padding: 13px; } .suicide-prevention-hotlines { grid-template-columns: 1fr; } }

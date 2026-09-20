@@ -83,17 +83,6 @@ export const SupportDrawer: React.FC = () => {
                     </span>
                   </div>
                 </div>
-                <div className="resource-actions">
-                  <a
-                    href="https://chmsu.edu.ph"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-resource primary external-link"
-                  >
-                    <span>Visit CHMSU Portal</span>
-                    <ExternalLink size={14} aria-hidden="true" />
-                  </a>
-                </div>
               </div>
 
               {/* National Center for Mental Health (NCMH) Philippines */}
